@@ -26,8 +26,8 @@ public class Test0416 {
         user1.setUsername("admin");
         user1.setPassword("admin");
         user1.setType(1);
-        User user=userService.getUser(user1);
-        logger.info(user.getUsername());
+
+        logger.info(user1.getUsername());
 
     }
 
