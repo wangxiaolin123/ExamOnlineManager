@@ -1,6 +1,7 @@
 package com.exam.controller;
 
 import com.exam.exception.UserException;
+import com.exam.utlis.GetIPInfo;
 import com.exam.utlis.MD5_Encoding;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,15 +33,24 @@ public class LoginController {
 		String inputUsername = request.getParameter("inputUser");
 		String inputPassword = request.getParameter("inputPassword");
 		Integer inputSelect = Integer.parseInt(request.getParameter("inputSelect"));
+		String ipInfo= GetIPInfo.getIP(request);
+
 		//print
 		System.out.println(inputUsername);
 		System.out.println(inputPassword);
 		System.out.println(inputSelect);
+        System.out.println(ipInfo);
+        User loginUser=new User();
+        loginUser.setUsername(inputUsername);
+        loginUser.setPassword(inputPassword);
+        loginUser.setType(inputSelect);
+        loginUser.setIp(ipInfo);
+
 
 		//获取session
 		HttpSession session = request.getSession();
 		try {
-			User user = this.userService.isLogin(inputUsername,inputPassword,inputSelect);
+			User user = this.userService.isLogin(loginUser);
 			session.setAttribute("user", user);
 			switch (inputSelect) {
 				case 1: {

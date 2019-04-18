@@ -3,7 +3,7 @@
 <mapper namespace="com.exam.mapper.UserMapper">
     <select id="getUserByName" parameterType="String" resultType="com.exam.domain.User">
        	SELECT
-       		`user`.userID,`user`.username,`user`.`password`,`user`.type
+       		`user`.userID,`user`.username,`user`.`password`,`user`.type,`user`.ip
 		FROM
 			`user`
 		where
@@ -20,4 +20,8 @@
 		AND
 			user.type=#{type}
     </select>
+
+	<update id="updateIpAddrByID" >
+		UPDATE `exam`.`user` SET `ip` = #{ipInfo} WHERE `userID` = #{userID}
+	</update>
 </mapper>

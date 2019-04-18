@@ -40,12 +40,13 @@
 	  <div class="container">
 		  <div class="row clearfix">
 			  <div class="col-md-6 column">
-				  <button type="button" class="btn btn-default">教师管理</button>
+				 <a href="<%=basePath%>/admin/t_manager.do">教师管理</a>
 				  <button type="button" class="btn btn-default">考试清理</button>
 				  <button type="button" class="btn btn-default">系统配置</button>
 				  <button type="button" class="btn btn-default">考试时间偏差设计</button>
 			  </div>
 			  <div class="col-md-6 column">
+
 			  </div>
 		  </div>
 	  </div>
@@ -56,17 +57,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
-		<script>
-			 $(function(){
-		    /*公共部分
-		     * 导航栏
-		     * footer CopyRight
-		     */
-		    $(".headerpage").load("../public/header.jsp");
-		   
-		}); 
-		</script>
+
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="<%=basePath%>/js/bootstrap.min.js"></script>
 		

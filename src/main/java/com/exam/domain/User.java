@@ -13,6 +13,16 @@ public class User {
    private String username;
    private String password;
    private Integer type;
+    private String ip;
+
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
     public Integer getUserID() {
         return userID;
@@ -53,6 +63,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", type=" + type +
+                ", ip='" + ip + '\'' +
                 '}';
     }
 }
