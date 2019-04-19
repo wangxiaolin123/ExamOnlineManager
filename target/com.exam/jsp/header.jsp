@@ -46,7 +46,7 @@
             <li><a href="<%=path%>/login/loginPage.do">登陆</a></li>
           </c:when>
           <c:otherwise>
-            <li><a href="javascript:void(0)">"${sessionScope.user.username}</a></li>
+            <li><a href="javascript:void(0)">${sessionScope.user.username}</a></li>
             <li><a href="<%=path%>/login/logout.do">退出</a></li>
           </c:otherwise>
         </c:choose>

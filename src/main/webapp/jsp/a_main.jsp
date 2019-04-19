@@ -40,7 +40,7 @@
 	  <div class="container">
 		  <div class="row clearfix">
 			  <div class="col-md-6 column">
-				 <a href="<%=basePath%>/admin/t_manager.do">教师管理</a>
+				 <a href="<%=basePath%>/adminT/t_manager.do">教师管理</a>
 				  <button type="button" class="btn btn-default">考试清理</button>
 				  <button type="button" class="btn btn-default">系统配置</button>
 				  <button type="button" class="btn btn-default">考试时间偏差设计</button>

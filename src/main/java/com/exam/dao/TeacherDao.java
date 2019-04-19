@@ -20,5 +20,9 @@ public class TeacherDao {
         return sqlSessionTemplate.selectList("com.exam.mapper.TeacherMapper.getTeachers");
     }
 
+    public int insertTeacher(Teacher teacher) throws SQLException{
+       return sqlSessionTemplate.insert("com.exam.mapper.TeacherMapper.insertTeacher",teacher);
+    }
+
 
 }

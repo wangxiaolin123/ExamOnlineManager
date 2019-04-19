@@ -1,6 +1,11 @@
 package com.exam.domain;
 
-public class Teacher {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Teacher  implements Serializable {
 
 //    teaID	int
     private Integer teaID;

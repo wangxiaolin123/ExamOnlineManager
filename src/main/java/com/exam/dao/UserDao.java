@@ -30,4 +30,8 @@ public class UserDao {
         map.put("ipInfo", ipInfo);
         sqlSessionTemplate.update("com.exam.mapper.UserMapper.updateIpAddrByID",map);
     }
+
+    public void insertUser(User user) throws SQLException{
+        sqlSessionTemplate.insert("com.exam.mapper.UserMapper.insertUser",user);
+    }
 }

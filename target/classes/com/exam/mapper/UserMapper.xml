@@ -24,4 +24,9 @@
 	<update id="updateIpAddrByID" >
 		UPDATE `exam`.`user` SET `ip` = #{ipInfo} WHERE `userID` = #{userID}
 	</update>
+
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO `exam`.`user`(`username`, `password`, `type`)
+		VALUES (#{username}, #{password},#{type})
+	</insert>
 </mapper>

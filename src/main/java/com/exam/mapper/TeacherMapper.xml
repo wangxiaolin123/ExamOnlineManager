@@ -6,4 +6,9 @@
         SELECT teacher.teaID,teacher.teaNumber,teacher.teaName,teacher.isadmin
         FROM teacher
     </select>
+
+    <insert id="insertTeacher" parameterType="teacher">
+        INSERT INTO `exam`.`teacher`(`teaNumber`, `teaName`, `isadmin`)
+        VALUES (#{teaNumber}, #{teaName},#{isadmin})
+    </insert>
 </mapper>

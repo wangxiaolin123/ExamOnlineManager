@@ -2,11 +2,7 @@ import com.exam.dao.TeacherDao;
 import com.exam.dao.UserDao;
 import com.exam.domain.Teacher;
 import com.exam.domain.User;
-import com.exam.exception.AdminException;
-import com.exam.exception.UserException;
-import com.exam.service.AdminService;
 import com.exam.service.UserService;
-import com.exam.service.UserServiceImpl;
 import com.exam.utlis.MD5_Encoding;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -16,7 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
@@ -69,16 +64,17 @@ public class Test0416 {
     }
 
     @Resource
-    private AdminService adminService;
+    private  TeacherDao teacherDao;
     @Test
-    public void TestTeacherDaoAndAdminService(){
+    public void TestTeacherDao(){
 
         try{
-            List<Teacher> teacherList=adminService.getAllTeachers();
-            for(Teacher teacher:teacherList){
-                System.out.println(teacher.toString());
-            }
-        }catch (AdminException e)
+            Teacher teacher=new Teacher();
+            teacher.setTeaNumber("1610120007");
+            teacher.setTeaName("教师07");
+            teacher.setIsadmin(false);
+            System.out.println(teacherDao.insertTeacher(teacher));
+        }catch (SQLException e)
         {
             e.printStackTrace();
         }
