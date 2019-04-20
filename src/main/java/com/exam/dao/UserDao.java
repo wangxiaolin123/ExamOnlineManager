@@ -34,4 +34,23 @@ public class UserDao {
     public void insertUser(User user) throws SQLException{
         sqlSessionTemplate.insert("com.exam.mapper.UserMapper.insertUser",user);
     }
+
+    public void updatePasswordByTeaNum(String userName,String password) throws SQLException{
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("userName",userName);
+        map.put("password", password);
+        sqlSessionTemplate.update("com.exam.mapper.UserMapper.updatePasswordByUserName",map);
+
+    }
+
+    public void updateUserNameByUserName(String newUsername, String oldUserName) throws SQLException{
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("newUserName",newUsername);
+        map.put("oldUserName",oldUserName);
+        sqlSessionTemplate.update("com.exam.mapper.UserMapper.updateUserNameByUserName",map);
+    }
+    public void deleteByUserName(String username) throws SQLException{
+        sqlSessionTemplate.delete("com.exam.mapper.UserMapper.deleteByUserName",username);
+    }
+
 }

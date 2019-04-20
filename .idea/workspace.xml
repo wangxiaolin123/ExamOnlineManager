@@ -7,59 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c605fa1-0f9a-4d39-8c0c-82469c255dc6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exam/exception/AdminTException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exam/utlis/ResultModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/exam/controller/AdminTConreoller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/exam/exception/AdminTException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/exam/service/AdminTService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/exam/service/AdminTServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/exam/utlis/ResultModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/controller/AdminTConreoller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/dao/TeacherDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/domain/Teacher.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/exception/AdminTException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/mapper/TeacherMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/service/AdminTService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/service/AdminTServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/utlis/ResultModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/lib/jackson-annotations-2.5.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/lib/jackson-core-2.5.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/lib/jackson-databind-2.5.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/com.exam/jsp/admin/t_manager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/test/Test0416.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/test/Test0416.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/controller/AdminConreoller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/exception/AdminException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/a_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/a_main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin/t_manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin/t_manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/controller/AdminConreoller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/dao/TeacherDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exam/dao/TeacherDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exam/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/controller/AdminTConreoller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exam/controller/AdminTConreoller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/exam/domain/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exam/domain/Teacher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/exception/AdminException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exam/mapper/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exam/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/service/AdminService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exam/service/AdminServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/controller/AdminTConreoller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/controller/AdminTConreoller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/domain/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/WEB-INF/classes/com/exam/domain/Teacher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/com.exam/jsp/a_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/jsp/a_main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/com.exam/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/jsp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Test0416.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Test0416.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/com.exam/jsp/admin/t_manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/com.exam/jsp/admin/t_manager.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -74,66 +39,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/admin/t_manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1554">
-              <caret line="140" column="46" selection-start-line="140" selection-start-column="46" selection-end-line="140" selection-end-column="46" />
+            <state relative-caret-position="270">
+              <caret line="194" column="41" selection-start-line="194" selection-start-column="41" selection-end-line="194" selection-end-column="41" />
               <folding>
                 <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#8022#8459#0#HTML" />
+                <element signature="e#8505#8564#0#HTML" />
+                <element signature="e#8609#8665#0#HTML" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/Test/test/Test0416.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4290">
-              <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/utlis/ResultModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
-              <caret line="99" column="7" lean-forward="true" selection-start-line="99" selection-start-column="7" selection-end-line="99" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1917#1947#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+            <state relative-caret-position="267">
+              <caret line="71" column="52" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-36">
+              <caret line="80" column="51" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/t_main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-117">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -141,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="55" column="48" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="48" />
+            <state relative-caret-position="114">
+              <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,28 +101,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
+            <state relative-caret-position="270">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/mapper/UserMapper.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+            <state relative-caret-position="100">
+              <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="49" column="23" lean-forward="true" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+            <state relative-caret-position="144">
+              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -234,22 +187,22 @@
         <option value="$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/exam/exception/AdminException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/exam/controller/AdminConreoller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java" />
-        <option value="$PROJECT_DIR$/src/Test/test/Test0416.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/exam/service/AdminService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/exam/service/AdminServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/a_main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/mapper/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/exam/utlis/ResultModel.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/admin/t_manager.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/a_main.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java" />
+        <option value="$PROJECT_DIR$/src/Test/test/Test0416.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/admin/t_manager.jsp" />
       </list>
     </option>
   </component>
@@ -407,6 +360,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap.js" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -435,8 +405,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -486,26 +456,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.index.jsp">
-    <configuration name="Test0416.Test0417" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="exam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test0416" />
-      <option name="METHOD_NAME" value="Test0417" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test0416.Test0418" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="exam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test0416" />
-      <option name="METHOD_NAME" value="Test0418" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test0416.TestTeacherDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="exam" />
       <option name="PACKAGE_NAME" value="" />
@@ -521,6 +471,26 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="Test0416" />
       <option name="METHOD_NAME" value="TestTeacherDaoAndAdminService" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test0416.TestTeacherManager" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="exam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test0416" />
+      <option name="METHOD_NAME" value="TestTeacherManager" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test0416.TestUserDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="exam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test0416" />
+      <option name="METHOD_NAME" value="TestUserDao" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -600,19 +570,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.Test0416.Test0417" />
-      <item itemvalue="JUnit.Test0416.Test0418" />
       <item itemvalue="JUnit.Test0416.TestTeacherDao" />
       <item itemvalue="JUnit.Test0416.TestTeacherDaoAndAdminService" />
+      <item itemvalue="JUnit.Test0416.TestTeacherManager" />
+      <item itemvalue="JUnit.Test0416.TestUserDao" />
       <item itemvalue="Tomcat Server.index.jsp" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Tomcat Server.index.jsp" />
         <item itemvalue="JUnit.Test0416.TestTeacherDao" />
+        <item itemvalue="JUnit.Test0416.TestUserDao" />
+        <item itemvalue="JUnit.Test0416.TestTeacherManager" />
         <item itemvalue="JUnit.Test0416.TestTeacherDaoAndAdminService" />
-        <item itemvalue="JUnit.Test0416.Test0418" />
-        <item itemvalue="JUnit.Test0416.Test0417" />
       </list>
     </recent_temporary>
   </component>
@@ -642,7 +612,9 @@
       <workItem from="1555584179069" duration="7184000" />
       <workItem from="1555599303081" duration="1289000" />
       <workItem from="1555645002821" duration="8609000" />
-      <workItem from="1555686414482" duration="2662000" />
+      <workItem from="1555686414482" duration="2857000" />
+      <workItem from="1555720625526" duration="14275000" />
+      <workItem from="1555740909084" duration="8638000" />
     </task>
     <task id="LOCAL-00001" summary="登陆完成&#10;md5密码加密完成">
       <created>1555510379352</created>
@@ -665,48 +637,56 @@
       <option name="project" value="LOCAL" />
       <updated>1555590485593</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="4月19日晚,管理员登陆子功能教师管理模块框架&#10;向用户表和教师表添加信息成功">
+      <created>1555689162690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555689162690</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test0416_Test0418 - 2019.04.18 at 10h 40m 25s.xml">
-      <configuration name="Test0416.Test0418" configurationId="JUnit" />
+    <history-entry file="Test0416_TestTeacherManager - 2019.04.20 at 15h 43m 29s.xml">
+      <configuration name="Test0416.TestTeacherManager" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test0416_Test0418 - 2019.04.18 at 10h 43m 52s.xml">
-      <configuration name="Test0416.Test0418" configurationId="JUnit" />
+    <history-entry file="Test0416_TestTeacherManager - 2019.04.20 at 15h 46m 47s.xml">
+      <configuration name="Test0416.TestTeacherManager" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test0416_Test0418 - 2019.04.18 at 10h 44m 29s.xml">
-      <configuration name="Test0416.Test0418" configurationId="JUnit" />
+    <history-entry file="Test0416_TestTeacherManager - 2019.04.20 at 15h 47m 13s.xml">
+      <configuration name="Test0416.TestTeacherManager" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test0416_Test0418 - 2019.04.18 at 10h 51m 06s.xml">
-      <configuration name="Test0416.Test0418" configurationId="JUnit" />
+    <history-entry file="Test0416_TestTeacherManager - 2019.04.20 at 16h 00m 43s.xml">
+      <configuration name="Test0416.TestTeacherManager" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test0416_Test0418 - 2019.04.18 at 10h 58m 25s.xml">
-      <configuration name="Test0416.Test0418" configurationId="JUnit" />
+    <history-entry file="Test0416_TestUserDao - 2019.04.20 at 16h 37m 58s.xml">
+      <configuration name="Test0416.TestUserDao" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test0416_TestTeacherDao - 2019.04.18 at 19h 27m 10s.xml">
+    <history-entry file="Test0416_TestUserDao - 2019.04.20 at 16h 38m 54s.xml">
+      <configuration name="Test0416.TestUserDao" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Test0416_TestUserDao - 2019.04.20 at 16h 41m 15s.xml">
+      <configuration name="Test0416.TestUserDao" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Test0416_TestUserDao - 2019.04.20 at 16h 42m 33s.xml">
+      <configuration name="Test0416.TestUserDao" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Test0416_TestTeacherDao - 2019.04.20 at 16h 43m 52s.xml">
       <configuration name="Test0416.TestTeacherDao" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test0416_TestTeacherDao - 2019.04.18 at 19h 28m 48s.xml">
-      <configuration name="Test0416.TestTeacherDao" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Test0416_TestTeacherDaoAndAdminService - 2019.04.18 at 19h 41m 14s.xml">
-      <configuration name="Test0416.TestTeacherDaoAndAdminService" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Test0416_TestTeacherDao - 2019.04.18 at 20h 37m 46s.xml">
-      <configuration name="Test0416.TestTeacherDao" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Test0416_TestTeacherDao - 2019.04.18 at 20h 43m 01s.xml">
+    <history-entry file="Test0416_TestTeacherDao - 2019.04.20 at 16h 45m 35s.xml">
       <configuration name="Test0416.TestTeacherDao" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58635000" />
+    <option name="totallyTimeSpent" value="81743000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49881798" visible="true" weight="0.21514745" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49881798" visible="true" weight="0.22050938" />
       <window_info id="Structure" order="1" sideWeight="0.501182" side_tool="true" weight="0.26340482" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -714,7 +694,7 @@
       <window_info id="Web" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" visible="true" weight="0.3385269" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" weight="0.45750707" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -771,7 +751,8 @@
     <MESSAGE value="登陆完成&#10;md5密码加密完成" />
     <MESSAGE value="4月17日晚，登陆异常情况处理完成" />
     <MESSAGE value="4月18日晚,管理员登陆子功能教师管理模块框架搭建完成，已完成教师集合查询和前台展示" />
-    <option name="LAST_COMMIT_MESSAGE" value="4月18日晚,管理员登陆子功能教师管理模块框架搭建完成，已完成教师集合查询和前台展示" />
+    <MESSAGE value="4月19日晚,管理员登陆子功能教师管理模块框架&#10;向用户表和教师表添加信息成功" />
+    <option name="LAST_COMMIT_MESSAGE" value="4月19日晚,管理员登陆子功能教师管理模块框架&#10;向用户表和教师表添加信息成功" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/exam.iml">
@@ -940,23 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/test/Test0416.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/service/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1590">
@@ -973,40 +937,6 @@
             <element signature="e#323#324#0" expanded="true" />
             <element signature="e#359#360#0" expanded="true" />
             <element signature="e#387#388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/t_main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/a_main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1032,45 +962,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/utlis/ResultModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        <state relative-caret-position="2310">
+          <caret line="99" column="7" selection-start-line="99" selection-start-column="7" selection-end-line="99" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/a_main.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
+        <state relative-caret-position="-260">
+          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/domain/Teacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/service/AdminTService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/t_main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-117">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="80" column="51" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+        <state relative-caret-position="354">
+          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/utlis/ResultModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/dao/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
-          <caret line="99" column="7" lean-forward="true" selection-start-line="99" selection-start-column="7" selection-end-line="99" selection-end-column="7" />
+        <state relative-caret-position="324">
+          <caret line="52" column="61" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+          <folding>
+            <element signature="e#1288#1304#0" expanded="true" />
+            <element signature="e#1630#1646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/test/Test0416.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="71" column="52" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1917#1947#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/dao/TeacherDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/mapper/TeacherMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/service/AdminTServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="55" column="48" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="48" />
+        <state relative-caret-position="114">
+          <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1079,20 +1073,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/admin/t_manager.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1554">
-          <caret line="140" column="46" selection-start-line="140" selection-start-column="46" selection-end-line="140" selection-end-column="46" />
+        <state relative-caret-position="270">
+          <caret line="194" column="41" selection-start-line="194" selection-start-column="41" selection-end-line="194" selection-end-column="41" />
           <folding>
             <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exam/controller/AdminTConreoller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="49" column="23" lean-forward="true" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#8022#8459#0#HTML" />
+            <element signature="e#8505#8564#0#HTML" />
+            <element signature="e#8609#8665#0#HTML" />
           </folding>
         </state>
       </provider>

@@ -15,6 +15,10 @@ public class TeacherDao {
     @Resource(name = "sqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
 
+    public  void updateTeacherByID(Teacher teacher) throws SQLException{
+        sqlSessionTemplate.update("com.exam.mapper.TeacherMapper.updateTeacherByID",teacher);
+    }
+
     public List getTeachers() throws SQLException{
 
         return sqlSessionTemplate.selectList("com.exam.mapper.TeacherMapper.getTeachers");
@@ -25,4 +29,12 @@ public class TeacherDao {
     }
 
 
+    public Teacher getTeacherById(Integer teaID) throws SQLException{
+        return (Teacher) sqlSessionTemplate.selectOne("com.exam.mapper.TeacherMapper.getTeacherById",teaID);
+    }
+
+
+    public void deleteByteaNumber(String teaNumber) throws SQLException{
+        sqlSessionTemplate.delete("com.exam.mapper.TeacherMapper.deleteByteaNumber",teaNumber);
+    }
 }

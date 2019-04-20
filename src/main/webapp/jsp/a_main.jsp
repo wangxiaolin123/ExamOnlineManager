@@ -22,6 +22,12 @@
     <title>main</title>
     <!-- Bootstrap -->
     <link href="<%=basePath %>/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap core JavaScript
+   ================================================== -->
+      <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+      <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
+      <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+      <script src="<%=basePath%>/js/bootstrap.min.js"></script>
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -54,12 +60,7 @@
 		
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="<%=basePath%>/js/bootstrap.min.js"></script>
 		
 		
   </body>

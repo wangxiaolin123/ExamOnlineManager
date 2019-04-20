@@ -2,6 +2,7 @@ import com.exam.dao.TeacherDao;
 import com.exam.dao.UserDao;
 import com.exam.domain.Teacher;
 import com.exam.domain.User;
+import com.exam.service.AdminTService;
 import com.exam.service.UserService;
 import com.exam.utlis.MD5_Encoding;
 import org.apache.log4j.Logger;
@@ -47,17 +48,11 @@ public class Test0416 {
     }
 
     @Test
-    public void Test0418() {
+    public void TestUserDao() {
 
 
         try {
-            User loginUser=new User();
-            loginUser.setUsername("1610121165");
-            loginUser.setPassword("王晓林");
-            loginUser.setType(1);
-            loginUser.setIp("tset");
-            userService.isLogin(loginUser);
-            System.out.println(userDao.getUserByName("1610121165"));
+           userDao.deleteByUserName("teacher");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -69,18 +64,33 @@ public class Test0416 {
     public void TestTeacherDao(){
 
         try{
-            Teacher teacher=new Teacher();
+          /*  Teacher teacher=new Teacher();
             teacher.setTeaNumber("1610120007");
             teacher.setTeaName("教师07");
             teacher.setIsadmin(false);
-            System.out.println(teacherDao.insertTeacher(teacher));
+            System.out.println(teacherDao.insertTeacher(teacher));*/
+            teacherDao.deleteByteaNumber("1610120000");
         }catch (SQLException e)
         {
             e.printStackTrace();
         }
 
+    }
 
+    @Resource
+    private AdminTService adminTService;
+
+    @Test
+    public void TestTeacherManager(){
+        Teacher teacher=new Teacher();
+        teacher.setTeaID(1);
+        teacher.setTeaName("鲁见过");
+        teacher.setTeaNumber("1012");
+        teacher.setIsadmin(true);
+        adminTService.updateTeacher(teacher,"卢老师");
+        System.out.println(new MD5_Encoding().getMD5ofStr("卢老师"));
 
     }
+
 
 }

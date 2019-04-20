@@ -5,7 +5,9 @@ import com.exam.domain.Teacher;
 import com.exam.exception.AdminTException;
 import com.exam.service.AdminTService;
 import com.exam.utlis.ResultModel;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,6 +54,37 @@ public class AdminTConreoller {
             e.printStackTrace();
             return ResultModel.build(500, "系统故障，请联系管理员！");
         }
+    }
+
+    @RequestMapping(value="/updateTeacher.do", method=RequestMethod.POST)
+    @ResponseBody
+    public ResultModel updateTeacher(Teacher teacher,HttpServletRequest request) {
+        String password=request.getParameter("teaPassword");
+        System.out.println(password);
+        System.out.println(teacher.toString());
+     try {
+            ResultModel res=adminTService.updateTeacher(teacher,password);
+            //返回数据
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultModel.build(500, "更新失败，请联系管理员！");
+        }
 
     }
+
+    @RequestMapping("/deleteTeacher.do/{teaNumber}")
+    @ResponseBody
+    public ResultModel removeTeacher(@PathVariable String teaNumber) {
+        try {
+
+            adminTService.deleteTeacher(teaNumber);
+            //返回数据
+            return ResultModel.ok();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultModel.build(500, "删除失败，请联系管理员！");
+        }
+    }
+
 }

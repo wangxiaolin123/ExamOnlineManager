@@ -19,6 +19,43 @@ public class AdminTServiceImpl implements AdminTService {
 
     @Resource
     private TeacherDao teacherDao;
+    @Resource
+    private UserDao userDao;
+
+
+
+    @Override
+    public ResultModel deleteTeacher(String teaNumber) {
+        try {
+            userDao.deleteByUserName(teaNumber);
+            teacherDao.deleteByteaNumber(teaNumber);
+            return ResultModel.ok();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return ResultModel.build(500, "系统出错");
+        }
+    }
+
+    public ResultModel updateTeacher(Teacher teacher,String password) {
+        try {
+            Teacher t = teacherDao.getTeacherById(teacher.getTeaID());
+
+            if(t.getTeaNumber()!=teacher.getTeaNumber()){
+                userDao.updateUserNameByUserName(teacher.getTeaNumber(),t.getTeaNumber());
+            }
+            //只修改改变部分
+            if (password != null) {
+                password=new MD5_Encoding().getMD5ofStr(password);
+                userDao.updatePasswordByTeaNum(teacher.getTeaNumber(),password);
+            }
+            teacherDao.updateTeacherByID(teacher);
+            teacher=teacherDao.getTeacherById(teacher.getTeaID());
+            return ResultModel.ok(teacher);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return ResultModel.build(500, "系统出错");
+        }
+    }
 
     @Override
     public List<Teacher> getAllTeachers() throws AdminTException {
@@ -35,8 +72,7 @@ public class AdminTServiceImpl implements AdminTService {
         return teacherList;
     }
 
-    @Resource
-    private UserDao userDao;
+
     @Override
     public ResultModel addTeacher(Teacher teacher) {
         teacher.setTeaID(null);

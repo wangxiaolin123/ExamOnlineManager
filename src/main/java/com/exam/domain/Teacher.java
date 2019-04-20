@@ -40,7 +40,7 @@ public class Teacher  implements Serializable {
         this.teaName = teaName;
     }
 
-    public boolean isIsadmin() {
+    public boolean getIsadmin() {
         return isadmin;
     }
 

@@ -25,8 +25,20 @@
 		UPDATE `exam`.`user` SET `ip` = #{ipInfo} WHERE `userID` = #{userID}
 	</update>
 
+	<update id="updatePasswordByUserName" >
+		UPDATE `exam`.`user` SET `password` = #{password} WHERE `userName` = #{userName}
+	</update>
+
+	<update id="updateUserNameByUserName">
+		UPDATE `exam`.`user` SET `username` = #{newUserName} WHERE `userName` = #{oldUserName}
+	</update>
+
 	<insert id="insertUser" parameterType="user">
 		INSERT INTO `exam`.`user`(`username`, `password`, `type`)
 		VALUES (#{username}, #{password},#{type})
 	</insert>
+
+	<delete id="deleteByUserName" parameterType="String">
+		DELETE FROM `exam`.`user` WHERE `username` = #{username}
+	</delete>
 </mapper>
