@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exam.mapper.StudentMapper">
+
+    <insert id="insert" parameterType="student">
+        INSERT INTO `exam`.`student`(`stuNumber`, `stuName`, `classID`)
+        VALUES (#{stuNumber}, #{stuName}, #{classID})
+    </insert>
+
+    <delete id="deleteByStuNumber" parameterType="String">
+        DELETE FROM `exam`.`student`
+        WHERE `stuNumber` = #{stuNumber}
+    </delete>
+
+    <select id="getStudentByStuNumber" parameterType="String" resultType="student">
+        SELECT student.stuID,student.stuNumber,student.stuName,student.classID
+        FROM student
+        WHERE student.stuNumber = #{stuNumber}
+    </select>
+
+    <select id="queryStudentsByClass" parameterType="Integer" resultType="student">
+        SELECT student.stuID,student.stuNumber,student.stuName,student.classID
+        FROM student
+        WHERE student.classID = #{classID}
+    </select>
+
+    <update id="modifyByID" parameterType="student">
+        UPDATE `exam`.`student`
+        SET `stuNumber` = #{stuNumber},
+            `stuName` = #{stuName},
+            `classID` = #{classID}
+        WHERE `stuID` = #{stuID}
+    </update>
+
+</mapper>

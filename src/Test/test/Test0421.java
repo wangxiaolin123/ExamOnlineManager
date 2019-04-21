@@ -1,7 +1,9 @@
 import com.exam.dao.ExamDao;
 import com.exam.dao.ExamStudentDao;
+import com.exam.dao.StudentDao;
 import com.exam.domain.Exam;
 import com.exam.domain.ExamStudent;
+import com.exam.domain.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +22,8 @@ public class Test0421 {
     private ExamDao examDao;
     @Resource
     private ExamStudentDao examStudentDao;
+    @Resource
+    private StudentDao studentDao;
 
     @Test
     public void ExamDaoTest(){
@@ -81,6 +85,34 @@ public class Test0421 {
 
         }catch (SQLException e)
         {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void StudentDaoTest(){
+        Student student=new Student();
+        student.setStuID(5);
+        student.setStuNumber("1610120002");
+        student.setStuName("测试2");
+        student.setClassID(4);
+        try{
+
+            //studentDao.insert(student);
+
+            //studentDao.deleteByStuNumber("1610120001");
+
+           /*Student student1= studentDao.getStudentByStuNumber("1610120001");
+            System.out.println(student1.toString());*/
+
+          /* List<Student> list=studentDao.queryStudentsByClass(1);
+           for(Student s:list)
+               System.out.println(s.toString());*/
+
+          studentDao.modifyByID(student);
+
+        }catch (SQLException e){
             e.printStackTrace();
         }
     }
