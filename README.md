@@ -23,12 +23,14 @@
 <title>登陆</title>
 <!-- 导入js css等 -->
 <c:import url="../import/style.jsp"></c:import>
+<!-- 该页面需要得样式 -->
 </head>
 <body>
 	<!--头部-->
 	<c:import url="../import/header.jsp">
 		<c:param name="data">login</c:param>
 	</c:import>
+        <!-- 写自己的内容 -->
 </body>
 ```
 
