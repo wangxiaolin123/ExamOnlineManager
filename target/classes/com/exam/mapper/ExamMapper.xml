@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exam.mapper.ExamMapper">
+
+    <insert id="insert" parameterType="exam">
+        INSERT INTO `exam`.`exam`(`examName`, `startTime`, `endTime`, `teaNumber`, `examPath`, `isAuto`, `state`)
+        VALUES (#{examName}, #{startTime},#{endTime}, #{teaNumber},#{examPath}, #{isAuto}, #{state})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM `exam`.`exam` WHERE `examID` = #{examID}
+    </delete>
+
+    <update id="modify" parameterType="exam">
+        UPDATE `exam`.`exam`
+        SET `examName` = #{examName},
+            `startTime` = #{startTime},
+            `endTime` = #{endTime},
+            `teaNumber` = #{teaNumber},
+            `examPath` = #{examPath},
+            `isAuto` = #{isAuto},
+            `state` = #{state}
+        WHERE `examID` = #{examID}
+    </update>
+
+    <select id="queryExamsByTeaNumber" resultType="exam">
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state
+        FROM exam
+        WHERE   exam.teaNumber = #{teaNumber}
+        AND exam.state = #{state}
+        ORDER BY exam.examID ASC
+    </select>
+
+    <select id="queryExamsById" parameterType="Integer" resultType="exam">
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state
+        FROM exam
+        WHERE   exam.examID = #{examID}
+    </select>
+
+    <update id="updateState">
+        UPDATE `exam`.`exam`
+        SET `state` = #{state}
+        WHERE `examID` = #{examID}
+    </update>
+
+    <select id="getExamsByState" resultType="exam">
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state
+        FROM exam
+        WHERE exam.state = #{state}
+        ORDER BY exam.examID ASC
+    </select>
+
+
+</mapper>

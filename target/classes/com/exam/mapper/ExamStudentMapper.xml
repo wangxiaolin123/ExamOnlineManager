@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exam.mapper.ExamStudentMapper">
+
+    <insert id="insert" parameterType="examStudent">
+        INSERT INTO `exam`.`exam_student`(`stuNumber`, `examID`, `answerPath`, `answerTime`)
+        VALUES (#{stuNumber}, #{examID}, #{answerPath}, #{answerTime})
+    </insert>
+
+    <delete id="deleteBySidEid" >
+        DELETE FROM `exam`.`exam_student`
+        WHERE `stuNumber` = #{stuNumber}
+        AND `examID` = #{examID}
+    </delete>
+
+    <delete id="deleteByExamID" parameterType="Integer">
+        DELETE FROM `exam`.`exam_student`
+        WHERE `examID` = #{examID}
+    </delete>
+
+    <update id="updateAnswerPathByStuNumber">
+        UPDATE `exam`.`exam_student`
+        SET `answerPath` = #{answerPath}, `answerTime` = #{answerTime}
+        WHERE `examID` = #{examID}
+        AND `stuNumber` = #{stuNumber}
+    </update>
+</mapper>
