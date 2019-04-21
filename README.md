@@ -31,3 +31,9 @@
 	</c:import>
 </body>
 ```
+
+- /webapp/jsp/import文件夹存放c:import标签导入的jsp文件
+- 其中header.jsp是导航栏，style.jsp是css，js，meta等内容
+- header.jsp导入需要传递参数，其目的是设置active属性
+
+
