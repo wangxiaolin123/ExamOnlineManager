@@ -24,4 +24,10 @@
         WHERE `examID` = #{examID}
         AND `stuNumber` = #{stuNumber}
     </update>
+
+    <select id="getExamsByNumber" resultType="examStudent">
+        SELECT exam_student.stuNumber,exam_student.examID,exam_student.esID,exam_student.answerPath,exam_student.answerTime
+        FROM exam_student
+        WHERE   exam_student.stuNumber = #{stuNumber}
+    </select>
 </mapper>

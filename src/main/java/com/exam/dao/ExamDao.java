@@ -73,12 +73,12 @@ public class ExamDao {
     }
 
     /**
-     * queryExamsById:(根据考试号查找考试)
+     * queryExamById:(根据考试号查找考试)
      * @param examID
      * @return
      * @throws SQLException
      */
-    public Exam queryExamsById(int examID) throws SQLException{
+    public Exam queryExamById(int examID) throws SQLException{
         return (Exam)sqlSessionTemplate.selectOne("com.exam.mapper.ExamMapper.queryExamsById",examID);
     }
 

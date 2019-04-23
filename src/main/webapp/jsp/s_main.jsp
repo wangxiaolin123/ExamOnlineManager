@@ -22,6 +22,9 @@
     <title>main</title>
     <!-- Bootstrap -->
     <link href="<%=basePath %>/css/bootstrap.min.css" rel="stylesheet">
+	  <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
+	  <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+	  <script src="<%=basePath%>/js/bootstrap.min.js"></script>
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -45,35 +48,79 @@
 							<button type="button" class="btn btn-default">答案上传</button> 
 							<button type="button" class="btn btn-default">查看已提交文件</button>
 						</div>
-						<div class="col-md-6 column">
+						<div class="col-md-2 column">
 						</div>
-						<div class="col-md-4 column">
+						<div class="col-md-10 column">
+							<div class="row clearfix">
+								<div class="col-md-12 column">
+									<table class="table table-hover">
+										<thead>
+										<tr>
+											<th>考试编号</th>
+											<th>考试名称</th>
+											<th>考试时间</th>
+											<th>考试状态</th>
+											<th>考生操作</th>
+										</tr>
+										</thead>
+										<tbody id="examList">
 
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>			
 		   </div>
-		
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
+
 		<script>
 			 $(function(){
-		    /*公共部分
-		     * 导航栏
-		     * footer CopyRight
-		     */
-		    $(".headerpage").load("../public/header.jsp");
-		   
-		}); 
+
+				 var url = "<%=basePath%>/student/examList.do?stuNumber=${sessionScope.user.number}";
+				 $.post(url, function (data) {
+					 if (data.status == 200) {
+						 //提交成功，修改该数据
+						 var html = "";
+						 var item=data.data;
+						 for( var i = 0; i < item.length; i++ ) {
+						 	var startTime=timeStamp2String(item[i].startTime);
+							 var endTime=timeStamp2String(item[i].endTime);
+						 	html += "<tr>";
+						 	html += "<td>" + item[i].examID + "</td>";
+						 	html += "<td>" + item[i].examName + "</td>";
+						 	html += "<td>" + startTime+" 至 "+ endTime+ "</td>";
+						 	html += "<td>" + item[i].state + "</td>";
+							 html += "<td>暂无</td>";
+						 	html += "</tr>";
+						 }
+						 $("#examList").html(html);
+
+					 } else {
+						 alert(data.msg);
+					 }
+				 })
+
+		});
+
+			 //在Jquery里格式化Date日期时间数据
+			 function timeStamp2String(time){
+				 var datetime = new Date();
+				 datetime.setTime(time);
+				 var year = datetime.getFullYear();
+				 var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+				 var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+				 var hour = datetime.getHours()< 10 ? "0" + datetime.getHours() : datetime.getHours();
+				 var minute = datetime.getMinutes()< 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+				 //var second = datetime.getSeconds()< 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+				 return year + "-" + month + "-" + date+" "+hour+":"+minute;//+":"+second;
+			 }
 		</script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="<%=basePath%>/js/bootstrap.min.js"></script>
-		
-		
+
+
+
   </body>
 </html>

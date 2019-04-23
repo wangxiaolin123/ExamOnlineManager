@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository("examStudentDao")
@@ -46,6 +47,11 @@ public class ExamStudentDao {
         sqlSessionTemplate.update(path+"updateAnswerPathByStuNumber",map);
     }
 
+
+
+    public List<ExamStudent> getExamsByNumber(String stuNumber) throws SQLException{
+        return sqlSessionTemplate.selectList(path+"getExamsByNumber",stuNumber);
+    }
 
 
 }
