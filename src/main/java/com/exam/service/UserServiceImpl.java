@@ -1,22 +1,32 @@
 package com.exam.service;
 
+import com.exam.dao.StudentDao;
+import com.exam.dao.TeacherDao;
 import com.exam.dao.UserDao;
+import com.exam.domain.Student;
+import com.exam.domain.Teacher;
 import com.exam.domain.User;
 import com.exam.exception.UserException;
 import com.exam.utlis.MD5_Encoding;
-import org.apache.ibatis.jdbc.SQL;
+import com.exam.utlis.ResultModel;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Resource
     private UserDao userDao;
+    @Resource
+    private StudentDao studentDao;
+    @Resource
+    private TeacherDao teacherDao;
 
-    public User isLogin(User user) throws UserException {
+    public ResultModel isLogin(User user) throws UserException {
 
         try {
             //未输入
@@ -44,14 +54,17 @@ public class UserServiceImpl implements UserService {
 
                             userDao.updateIpAddrByID(user1.getUserID(),user.getIp());
                             user1.setIp(user.getIp());
-                            return user1;
 
                         }
                         if(user1.getType()==3){
 
                             if (user.getIp().equals(user1.getIp())) {
                                 user1.setIp(user.getIp());
-                                return user1;
+                                Student student=studentDao.getStudentByStuNumber(user.getUsername());
+                                Map<String,String> map=new HashMap<String, String>();
+                                map.put("number",student.getStuNumber());
+                                map.put("name",student.getStuName());
+                                return ResultModel.ok(map);
 
                             } else {
                                 throw new UserException("IP分配错误，请联系任课教师或管理员！");
@@ -59,7 +72,17 @@ public class UserServiceImpl implements UserService {
                         }else {
                             userDao.updateIpAddrByID(user1.getUserID(),user.getIp());
                             user1.setIp(user.getIp());
-                            return user1;
+                            Map<String,Object> map=new HashMap<String, Object>();
+                            if(!user.getUsername().equals("admin")){
+                                Teacher teacher=teacherDao.getTeacherByTeaNumber(user1.getUsername());
+                                map.put("number",teacher.getTeaNumber());
+                                map.put("name",teacher.getTeaName());
+                                map.put("isadmin",teacher.getIsadmin());
+                            }else {
+                                map.put("name",user.getUsername());
+                            }
+
+                            return ResultModel.ok(map);
                         }
 
 

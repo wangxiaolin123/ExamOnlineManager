@@ -33,6 +33,10 @@ public class TeacherDao {
         return (Teacher) sqlSessionTemplate.selectOne("com.exam.mapper.TeacherMapper.getTeacherById",teaID);
     }
 
+    public Teacher getTeacherByTeaNumber(String teaNumber) throws SQLException{
+        return (Teacher) sqlSessionTemplate.selectOne("com.exam.mapper.TeacherMapper.getTeacherByTeaNumber",teaNumber);
+    }
+
 
     public void deleteByteaNumber(String teaNumber) throws SQLException{
         sqlSessionTemplate.delete("com.exam.mapper.TeacherMapper.deleteByteaNumber",teaNumber);

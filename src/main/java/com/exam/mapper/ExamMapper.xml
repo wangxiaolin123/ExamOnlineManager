@@ -3,8 +3,8 @@
 <mapper namespace="com.exam.mapper.ExamMapper">
 
     <insert id="insert" parameterType="exam">
-        INSERT INTO `exam`.`exam`(`examName`, `startTime`, `endTime`, `teaNumber`, `examPath`, `isAuto`, `state`)
-        VALUES (#{examName}, #{startTime},#{endTime}, #{teaNumber},#{examPath}, #{isAuto}, #{state})
+        INSERT INTO `exam`.`exam`(`examName`, `startTime`, `endTime`, `teaNumber`, `examPath`, `isAuto`, `state`,`classID`)
+        VALUES (#{examName}, #{startTime},#{endTime}, #{teaNumber},#{examPath}, #{isAuto}, #{state},#{classID})
     </insert>
 
     <delete id="delete" parameterType="Integer">
@@ -19,12 +19,20 @@
             `teaNumber` = #{teaNumber},
             `examPath` = #{examPath},
             `isAuto` = #{isAuto},
-            `state` = #{state}
+            `state` = #{state},
+            `classID` = #{classID}
         WHERE `examID` = #{examID}
     </update>
 
     <select id="queryExamsByTeaNumber" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
+        FROM exam
+        WHERE   exam.teaNumber = #{teaNumber}
+        ORDER BY exam.examID ASC
+    </select>
+
+    <select id="queryExamsByTeaNumberState" resultType="exam">
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
         FROM exam
         WHERE   exam.teaNumber = #{teaNumber}
         AND exam.state = #{state}
@@ -32,7 +40,7 @@
     </select>
 
     <select id="queryExamsById" parameterType="Integer" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
         FROM exam
         WHERE   exam.examID = #{examID}
     </select>
@@ -44,7 +52,7 @@
     </update>
 
     <select id="getExamsByState" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
         FROM exam
         WHERE exam.state = #{state}
         ORDER BY exam.examID ASC

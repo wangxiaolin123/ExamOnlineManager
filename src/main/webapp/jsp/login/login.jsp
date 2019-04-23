@@ -40,9 +40,9 @@
 				<%--@declare id="inputtype"--%><h2 class="form-signin-heading">在线考试系统</h2>
 					<font color="red">${ requestScope.tips}</font>
 				<label for="inputUser" class="sr-only">账户</label>
-				<input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="账户名" value="1610121165" required autofocus>
+				<input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="账户名" required autofocus>
 				<label for="inputPassword" class="sr-only">密码</label>
-				<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="密码" value="王晓林" required>
+				<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="密码" value="卢老师" required>
 				<label for="inputType" class="sr-only">账号类型</label>
 				<select name="inputSelect" id="inputSelect" class="form-control">
 					<option value="1">管理员</option>

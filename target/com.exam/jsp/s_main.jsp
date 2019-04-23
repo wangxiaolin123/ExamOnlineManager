@@ -48,9 +48,7 @@
 						<div class="col-md-6 column">
 						</div>
 						<div class="col-md-4 column">
-							当前路径：
-							<%=request.getContextPath()
-							%>
+
 						</div>
 					</div>
 				</div>

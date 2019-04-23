@@ -13,6 +13,12 @@
         WHERE teacher.teaID=#{teaID}
     </select>
 
+    <select id="getTeacherByTeaNumber" resultType="teacher">
+        SELECT teacher.teaID,teacher.teaNumber,teacher.teaName,teacher.isadmin
+        FROM teacher
+        WHERE teacher.teaNumber=#{teaNumber}
+    </select>
+
     <insert id="insertTeacher" parameterType="teacher">
         INSERT INTO `exam`.`teacher`(`teaNumber`, `teaName`, `isadmin`)
         VALUES (#{teaNumber}, #{teaName},#{isadmin})

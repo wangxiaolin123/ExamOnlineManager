@@ -205,7 +205,7 @@
 
         var table = document.getElementById("teacherList");
         var row = table.insertRow(1);
-        var str = "<tr id='${data.teaID}'><td>" + data.teaNumber + "</td><td>"
+        var str = "<tr id='"+data.teaID+"'><td>" + data.teaNumber + "</td><td>"
             + data.teaName + "</td><td>" + data.isadmin + "</td><td class='list-inline'>" +
             "<li><a href='javascript:void(0)' onclick='edtiTeacher(this)'>修改</a></li>" +
             "<li><a href='javascript:void(0)' onclick='delRow()'>删除</a></li>" +

@@ -6,11 +6,13 @@ import com.exam.domain.ExamStudent;
 import com.exam.domain.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -25,17 +27,18 @@ public class Test0421 {
     @Resource
     private StudentDao studentDao;
 
+
     @Test
     public void ExamDaoTest(){
 
-        Exam exam=new Exam();
+       /* Exam exam=new Exam();
         exam.setExamName("updat3");
         exam.setStartTime(new Date());
         exam.setEndTime(new Date());
         exam.setExamPath("/test/1");
         exam.setisAuto(false);
         exam.setState("before");
-        exam.setTeaNumber("1610121165");
+        exam.setTeaNumber("1610121165");*/
 
         try {
 
@@ -47,18 +50,19 @@ public class Test0421 {
 
             //examDao.modify(exam);
 
-            /*List<Exam> list=examDao.queryExamsByTeaNumber("1610121165","end");
-            for (Exam e:list)
-                System.out.println(e.toString());*/
+            List<Exam> list=examDao.queryExamsByTeaNumber("1610121165");
+            for (Exam e:list){
+                System.out.println(e.getEndTime());
+            }
 
            /* Exam exam1=examDao.queryExamsById(1);
             System.out.println(exam1.toString());*/
 
            //examDao.updateState(1,"before");
-
+/*
             List<Exam> list=examDao.getExamsByState("starting");
             for (Exam e:list)
-                System.out.println(e.toString());
+                System.out.println(e.toString());*/
 
         }catch (SQLException e){
             e.printStackTrace();

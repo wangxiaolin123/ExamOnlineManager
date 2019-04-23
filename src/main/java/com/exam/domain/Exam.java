@@ -1,10 +1,12 @@
 package com.exam.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Exam implements Serializable {
     //examID	int
     private Integer examID;
@@ -13,11 +15,11 @@ public class Exam implements Serializable {
     private String examName;
     //startTime	datetime
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
 
     //endTime	datetime
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
     private Date endTime;
     //teaNumber	char
     private String teaNumber;
@@ -27,6 +29,16 @@ public class Exam implements Serializable {
     private boolean isAuto;
 
     private String state;
+
+    private Integer classID;
+
+    public Integer getClassID() {
+        return classID;
+    }
+
+    public void setClassID(Integer classID) {
+        this.classID = classID;
+    }
 
     public String getState() {
         return state;
@@ -103,6 +115,7 @@ public class Exam implements Serializable {
                 ", examPath='" + examPath + '\'' +
                 ", isAuto=" + isAuto +
                 ", state='" + state + '\'' +
+                ", classID=" + classID +
                 '}';
     }
 }

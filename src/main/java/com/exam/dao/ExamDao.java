@@ -48,17 +48,27 @@ public class ExamDao {
     }
 
     /**
-     * queryExamsByTeacher:(查找教师创建的考试)
+     * queryExamsByTeacherState:(查找教师创建的考试)
      * @param teaNumber 根据工号查询
      * @param state 根据状态查询
      * @return
      * @throws SQLException
      */
-    public List<Exam> queryExamsByTeaNumber(String teaNumber, String state) throws SQLException{
+    public List<Exam> queryExamsByTeaNumberState(String teaNumber, String state) throws SQLException{
         Map<String,Object> map=new HashMap<String, Object>();
         map.put("teaNumber",teaNumber);
         map.put("state",state);
-        List<Exam> list=sqlSessionTemplate.selectList("com.exam.mapper.ExamMapper.queryExamsByTeaNumber",map);
+        List<Exam> list=sqlSessionTemplate.selectList("com.exam.mapper.ExamMapper.queryExamsByTeaNumberState",map);
+        return list;
+    }
+    /**
+     * queryExamsByTeacher:(查找教师创建的考试)
+     * @param teaNumber 根据工号查询
+     * @return
+     * @throws SQLException
+     */
+    public List<Exam> queryExamsByTeaNumber(String teaNumber) throws SQLException{
+        List<Exam> list=sqlSessionTemplate.selectList("com.exam.mapper.ExamMapper.queryExamsByTeaNumber",teaNumber);
         return list;
     }
 

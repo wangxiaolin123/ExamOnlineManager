@@ -43,7 +43,7 @@
 				  <div class="list-group">
 					  <a href="#" class="list-group-item active">考试管理</a>
 					  <div class="list-group-item">
-						  <button type="button" class="btn btn-default">新建考试</button>
+						  <a href="<%=basePath%>/teacher/exammanager.do?teaNumber=${sessionScope.user.number}" class="btn btn-default">考试管理</a>
 						  <button type="button" class="btn btn-default">查看考试情况</button>
 						  <button type="button" class="btn btn-default">编辑考试</button>
 						  <button type="button" class="btn btn-default">查看考试情况</button>
