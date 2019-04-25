@@ -106,4 +106,7 @@ public class ExamDao {
         return list;
     }
 
+    public void updateExamById(Exam exam) {
+        sqlSessionTemplate.update("com.exam.mapper.ExamMapper.updateExamById",exam);
+    }
 }

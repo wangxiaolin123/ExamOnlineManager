@@ -31,14 +31,15 @@ public class Test0421 {
     @Test
     public void ExamDaoTest(){
 
-       /* Exam exam=new Exam();
-        exam.setExamName("updat3");
+        Exam exam=new Exam();
+        exam.setExamName("算法设计");
         exam.setStartTime(new Date());
         exam.setEndTime(new Date());
-        exam.setExamPath("/test/1");
+        exam.setExamPath("/1/");
         exam.setisAuto(false);
-        exam.setState("before");
-        exam.setTeaNumber("1610121165");*/
+       exam.setState("before");
+       exam.setTeaNumber("1010120001");
+       exam.setClassID(1);
 
         try {
 
@@ -49,14 +50,15 @@ public class Test0421 {
             //exam.setExamID(1);
 
             //examDao.modify(exam);
-
+/*
             List<Exam> list=examDao.queryExamsByTeaNumber("1610121165");
             for (Exam e:list){
                 System.out.println(e.getEndTime());
-            }
-
-           /* Exam exam1=examDao.queryExamsById(1);
-            System.out.println(exam1.toString());*/
+            }*/
+                exam.setExamID(1);
+                examDao.updateExamById(exam);
+           Exam exam1=examDao.queryExamById(1);
+            System.out.println(exam1.toString());
 
            //examDao.updateState(1,"before");
 /*

@@ -2,16 +2,12 @@ package com.exam.controller;
 
 
 import com.exam.domain.Exam;
-import com.exam.service.ExamService;
 import com.exam.service.TeacherService;
 import com.exam.utlis.ResultModel;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -83,6 +79,18 @@ public class TeacherController {
             e.printStackTrace();
             return ResultModel.build(500, "删除考试失败，请联系管理员！");
         }
+    }
+
+
+    @RequestMapping(value = "/upPaper.do",method=RequestMethod.POST)
+    @ResponseBody
+    public ResultModel upPaper(@RequestParam(value = "examID")Integer examID, @RequestParam(value = "upFile", required = false) MultipartFile file){
+
+        if (file != null){
+            ResultModel res=teacherService.upPaper(file,examID);
+            return res;
+        }
+        return ResultModel.build(500,"试卷上传失败");
     }
 
 

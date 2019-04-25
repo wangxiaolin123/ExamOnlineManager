@@ -58,5 +58,19 @@
         ORDER BY exam.examID ASC
     </select>
 
+    <update id="updateExamById" parameterType="exam">
+        UPDATE `exam`.`exam`
+        <set>
+            <if test="examName != null">`examName` = #{examName},</if>
+            <if test="startTime != null">`startTime` = #{startTime},</if>
+            <if test="endTime != null">`endTime` = #{endTime},</if>
+            <if test="teaNumber != null">`teaNumber` = #{teaNumber},</if>
+            <if test="examPath != null">`examPath` = #{examPath},</if>
+            <if test="state != null">`state` = #{state},</if>
+            <if test="classID != null">`classID` = #{classID},</if>
+        </set>
+        WHERE `examID` = #{examID}
+    </update>
+
 
 </mapper>

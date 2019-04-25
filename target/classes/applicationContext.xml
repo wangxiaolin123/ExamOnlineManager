@@ -36,10 +36,11 @@
         <property name="defaultAutoCommit" value="${defaultAutoCommit}"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:typeAliasesPackage="com.exam.domain">
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:typeAliasesPackage="com.exam.domain">
         <property name="dataSource" ref="dataSource"/>
 
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath*:com/exam/mapper/*.xml"></property>
     </bean>
 
@@ -55,6 +56,22 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <!--&lt;!&ndash; 上传文件拦截，设置最大上传文件大小 10M=10*1024*1024(B)=10485760 bytes &ndash;&gt;
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760" />
+        &lt;!&ndash; resolveLazily属性启用是为了推迟文件解析，以便在Action 中捕获文件大小异常 &ndash;&gt;
+        <property name="resolveLazily" value="true" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>-->
+
+    <!--文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 限制上传文件大小上限5M -->
+        <property name="maxUploadSize" value="5242880" />
+    </bean>
+
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
