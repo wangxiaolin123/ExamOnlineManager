@@ -63,9 +63,12 @@ public class StudentController {
         String ftpPath = examPath.substring(0, examPath.lastIndexOf("/") + 1);
         String downFileName = examName + suffix;
 
+        //System.out.println("学生下载 文件名"+downFileName+"后缀名"+suffix);
+
         System.out.println(downFileName);
         response.setCharacterEncoding("UTF-8");//设置字符集
         response.setContentType("multipart/form-data;charset=UTF-8");//设置下载内容类型
+
         String headerValue = "attachment;";
         headerValue += " filename=\"" + encodeURIComponent(downFileName) + "\";";
         headerValue += " filename*=utf-8''" + encodeURIComponent(downFileName);

@@ -2,6 +2,7 @@ package com.exam.controller;
 
 
 import com.exam.domain.Exam;
+import com.exam.service.ExamService;
 import com.exam.service.TeacherService;
 import com.exam.utlis.ResultModel;
 
@@ -20,7 +21,25 @@ public class TeacherController {
 
     @Resource
     private TeacherService teacherService;
+    @Resource
+    private ExamService examService;
 
+    @RequestMapping("/mainPage.do")
+	public String show() {
+		return "teacher/t_main";
+	}
+
+
+    @RequestMapping("/examming.do")
+    public String examing(@RequestParam(value = "examID")Integer examID,HttpServletRequest request) {
+
+        HttpSession session=request.getSession();
+        System.out.println("访问考试进行页"+examID);
+        Exam exam=teacherService.getExamByID(examID);
+        session.setAttribute("examInfo",exam);
+        return "teacher/exam_info";
+    }
+    
     @RequestMapping("/exammanager.do")
     public String getExamList(HttpServletRequest request) {
 
@@ -34,7 +53,7 @@ public class TeacherController {
             return "teacher/exammanager";
         }
         else {
-            return "error";
+            return "error/error";
         }
     }
 

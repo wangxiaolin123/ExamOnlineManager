@@ -1,8 +1,11 @@
 package com.exam.controller;
 
+import com.exam.domain.Notice;
 import com.exam.exception.UserException;
+import com.exam.service.ExamService;
 import com.exam.utlis.GetIPInfo;
 import com.exam.utlis.ResultModel;
+import com.exam.websocket.NoticeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,6 +16,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/login")
@@ -20,8 +24,10 @@ public class LoginController {
 	
 	@Resource
     private UserService userService;
+	@Resource
+	private ExamService examService;
 	
-	@RequestMapping("loginPage.do")
+	@RequestMapping("/loginPage.do")
 	public String show() {
 		return "login/login";
 	}
@@ -35,10 +41,8 @@ public class LoginController {
 		Integer inputSelect = Integer.parseInt(request.getParameter("inputSelect"));
 		String ipInfo= GetIPInfo.getIP(request);
 		//print
-		System.out.println(inputUsername);
-		System.out.println(inputPassword);
-		System.out.println(inputSelect);
-        System.out.println(ipInfo);
+		System.out.println(inputUsername+" "+inputPassword+" "+inputSelect+" "+ipInfo);
+
 
         User loginUser=new User();
         loginUser.setUsername(inputUsername);
@@ -52,17 +56,18 @@ public class LoginController {
 		try {
 			ResultModel res = this.userService.isLogin(loginUser);
 			session.setAttribute("user", res.getData());
+			System.out.println("用户登陆返回的信息 " + res.getData());
 			switch (inputSelect) {
 				case 1: {
 
-					return "a_main";
+					return "admin/a_main";
 				}
 				case 2: {
 
-					return "t_main";
+					return "teacher/t_main";
 				}
 				case 3: {
-					return "s_main";
+					return "student/s_main";
 				}
 
 			}

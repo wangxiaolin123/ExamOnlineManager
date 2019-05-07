@@ -25,6 +25,11 @@ public class AdminTConreoller {
     @Resource
     private AdminTService adminTService;
 
+    @RequestMapping("/mainPage.do")
+	public String show() {
+		return "admin/a_main";
+	}
+    
     @RequestMapping("/t_manager.do")
     public String Teacher_Manager(HttpServletRequest request, HttpServletResponse response) {
 
@@ -38,7 +43,7 @@ public class AdminTConreoller {
             e.printStackTrace();
         }
 
-        return "a_main";
+        return "admin/a_main";
 
     }
 

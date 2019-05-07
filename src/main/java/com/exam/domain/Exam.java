@@ -8,6 +8,7 @@ import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Exam implements Serializable {
+
     //examID	int
     private Integer examID;
     //examName	varchar
@@ -31,6 +32,9 @@ public class Exam implements Serializable {
     private String state;
 
     private Integer classID;
+
+    private boolean isManager;
+
 
     public Integer getClassID() {
         return classID;
@@ -96,12 +100,22 @@ public class Exam implements Serializable {
         this.examPath = examPath;
     }
 
-    public boolean getisAuto() {
+
+    public boolean getIsAuto() {
         return isAuto;
     }
 
-    public void setisAuto(boolean isAauto) {
-        this.isAuto = isAauto;
+    public void setIsAuto(boolean isAuto) {
+        this.isAuto = isAuto;
+    }
+
+
+    public boolean getIsManager() {
+        return isManager;
+    }
+
+    public void setIsManager(boolean isManager) {
+        this.isManager = isManager;
     }
 
     @Override
@@ -116,6 +130,7 @@ public class Exam implements Serializable {
                 ", isAuto=" + isAuto +
                 ", state='" + state + '\'' +
                 ", classID=" + classID +
+                ", isManager=" + isManager +
                 '}';
     }
 }

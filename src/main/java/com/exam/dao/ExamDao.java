@@ -47,6 +47,10 @@ public class ExamDao {
         sqlSessionTemplate.update("com.exam.mapper.ExamMapper.modify",exam);
     }
 
+    public void updateExamById(Exam exam) {
+        sqlSessionTemplate.update("com.exam.mapper.ExamMapper.updateExamById",exam);
+    }
+
     /**
      * queryExamsByTeacherState:(查找教师创建的考试)
      * @param teaNumber 根据工号查询
@@ -106,7 +110,20 @@ public class ExamDao {
         return list;
     }
 
-    public void updateExamById(Exam exam) {
-        sqlSessionTemplate.update("com.exam.mapper.ExamMapper.updateExamById",exam);
+
+    /**
+     * @Description:(根据考试状态查询考试列表). <br/>
+     * @param state
+     * @return
+     * @throws SQLException
+     */
+    public List<Exam> getExamsForAllStates(String state,boolean isManager) throws SQLException{
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("isManager",isManager);
+        map.put("state",state);
+        List<Exam> list=sqlSessionTemplate.selectList("com.exam.mapper.ExamMapper.getExamsForAllStates",map);
+        return list;
     }
+
+
 }

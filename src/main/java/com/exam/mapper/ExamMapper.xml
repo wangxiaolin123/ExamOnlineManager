@@ -3,8 +3,8 @@
 <mapper namespace="com.exam.mapper.ExamMapper">
 
     <insert id="insert" parameterType="exam">
-        INSERT INTO `exam`.`exam`(`examName`, `startTime`, `endTime`, `teaNumber`, `examPath`, `isAuto`, `state`,`classID`)
-        VALUES (#{examName}, #{startTime},#{endTime}, #{teaNumber},#{examPath}, #{isAuto}, #{state},#{classID})
+        INSERT INTO `exam`.`exam`(`examName`, `startTime`, `endTime`, `teaNumber`, `examPath`, `isAuto`, `state`,`classID`,`isManager`)
+        VALUES (#{examName}, #{startTime},#{endTime}, #{teaNumber},#{examPath}, #{isAuto}, #{state},#{classID},#{isManager})
     </insert>
 
     <delete id="delete" parameterType="Integer">
@@ -20,7 +20,8 @@
             `examPath` = #{examPath},
             `isAuto` = #{isAuto},
             `state` = #{state},
-            `classID` = #{classID}
+            `classID` = #{classID},
+             `isManager` = #{isManager}
         WHERE `examID` = #{examID}
     </update>
 
@@ -58,6 +59,14 @@
         ORDER BY exam.examID ASC
     </select>
 
+
+    <select id="getExamsForAllStates" resultType="exam">
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
+        FROM exam
+        WHERE exam.state = #{state} AND exam.isManager = #{isManager}
+        ORDER BY exam.examID ASC
+    </select>
+
     <update id="updateExamById" parameterType="exam">
         UPDATE `exam`.`exam`
         <set>
@@ -66,8 +75,10 @@
             <if test="endTime != null">`endTime` = #{endTime},</if>
             <if test="teaNumber != null">`teaNumber` = #{teaNumber},</if>
             <if test="examPath != null">`examPath` = #{examPath},</if>
+            <if test="isAuto != null">`isAuto` = #{isAuto},</if>
             <if test="state != null">`state` = #{state},</if>
             <if test="classID != null">`classID` = #{classID},</if>
+            <if test="isManager != null">`isManager` = #{isManager},</if>
         </set>
         WHERE `examID` = #{examID}
     </update>

@@ -64,6 +64,10 @@ public class UserServiceImpl implements UserService {
                                 Map<String,String> map=new HashMap<String, String>();
                                 map.put("number",student.getStuNumber());
                                 map.put("name",student.getStuName());
+
+                                //实验测试使用
+                                map.put("ip",user.getIp());
+
                                 return ResultModel.ok(map);
 
                             } else {
@@ -78,6 +82,10 @@ public class UserServiceImpl implements UserService {
                                 map.put("number",teacher.getTeaNumber());
                                 map.put("name",teacher.getTeaName());
                                 map.put("isadmin",teacher.getIsadmin());
+
+                                //实验测试使用
+                                map.put("ip",user.getIp());
+
                             }else {
                                 map.put("name",user.getUsername());
                             }

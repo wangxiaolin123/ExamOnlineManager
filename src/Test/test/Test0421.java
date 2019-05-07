@@ -4,6 +4,7 @@ import com.exam.dao.StudentDao;
 import com.exam.domain.Exam;
 import com.exam.domain.ExamStudent;
 import com.exam.domain.Student;
+import com.exam.service.ExamService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,19 +28,13 @@ public class Test0421 {
     @Resource
     private StudentDao studentDao;
 
+    @Resource
+    private ExamService examService;
 
     @Test
     public void ExamDaoTest(){
 
-        Exam exam=new Exam();
-        exam.setExamName("算法设计");
-        exam.setStartTime(new Date());
-        exam.setEndTime(new Date());
-        exam.setExamPath("/1/");
-        exam.setisAuto(false);
-       exam.setState("before");
-       exam.setTeaNumber("1010120001");
-       exam.setClassID(1);
+
 
         try {
 
@@ -55,29 +50,27 @@ public class Test0421 {
             for (Exam e:list){
                 System.out.println(e.getEndTime());
             }*/
-                exam.setExamID(1);
-                examDao.updateExamById(exam);
-           Exam exam1=examDao.queryExamById(1);
-            System.out.println(exam1.toString());
+            List<Exam> examList = examService.GetReadyExams(15);
+            for (Exam e:examList)
+                System.out.println(e.toString());
 
            //examDao.updateState(1,"before");
 /*
             List<Exam> list=examDao.getExamsByState("starting");
-            for (Exam e:list)
-                System.out.println(e.toString());*/
+          */
 
-        }catch (SQLException e){
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     @Test
     public void ExamStudentDaoTest(){
-        ExamStudent examStudent=new ExamStudent();
+        /*ExamStudent examStudent=new ExamStudent();
         examStudent.setStuNumber("1610121160");
         examStudent.setExamID(6);
         examStudent.setAnswerPath("/b");
-        examStudent.setAnswerTime(new Date());
+        examStudent.setAnswerTime(new Date());*/
 
         try {
 
@@ -85,9 +78,15 @@ public class Test0421 {
 
             //examStudentDao.deleteBySidEid("1610121160",6);
 
-            //examStudentDao.deleteByExamID(2);
+            ExamStudent examStudent=examStudentDao.getExamsByExamIDStuNumber(1,"1610121165");
 
-            examStudentDao.updateAnswerPathByStuNumber(2,"1610121165","/publicasdawfd",new Date());
+            System.out.println(examStudent.toString());
+            //examStudentDao.updateAnswerPathByStuNumber(2,"1610121165","/publicasdawfd",new Date());
+
+        /*   List<ExamStudent> es=examStudentDao.getExamsByExamID(1);
+           for (ExamStudent e:es){
+               System.out.println(e.toString());
+           }*/
 
         }catch (SQLException e)
         {

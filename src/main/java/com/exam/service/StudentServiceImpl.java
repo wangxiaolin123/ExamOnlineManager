@@ -65,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
             String suffix = originalName.substring(originalName.lastIndexOf("."));
             // 时间戳+随机数生成文件名
             String fileName = String.valueOf(System.currentTimeMillis()) + (int) ((Math.random() * 9 + 1) * 100000) + suffix;
-
+           // System.out.println("学生上传 文件名"+fileName+"后缀名"+suffix);
             String path = "/public/" + examID + "/";
 
             // 将文件转化为字节流

@@ -32,6 +32,17 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
+    public Exam getExamByID(Integer examID) {
+
+        try {
+            return examDao.queryExamById(examID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public ResultModel addExam(Exam exam) {
         try{
             examDao.insert(exam);
@@ -76,6 +87,7 @@ public class TeacherServiceImpl implements TeacherService{
             // 时间戳+随机数生成文件名
             String fileName =String.valueOf(System.currentTimeMillis())+(int)((Math.random()*9+1)*100000)+suffix;
 
+            //System.out.println("教师上传 文件名"+fileName+"后缀名"+suffix);
             String path="/public/"+examID+"/";
 
             // 将文件转化为字节流

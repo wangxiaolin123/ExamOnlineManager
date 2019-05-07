@@ -24,6 +24,45 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+
+
+
+    <!-- 配置quartz,要执行的任务类 -->
+    <bean id="autoJob" class="com.exam.quartz.AutoJob"></bean>
+
+    <!-- 将需要执行的定时任务注入job中 -->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="autoJob"/>
+        <!-- 任务类中需要执行的方法 -->
+        <property name="targetMethod" value="Test"></property>
+        <!-- 上一次未执行完成的，要等待有再执行。 -->
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <!-- 基本的定时器，会绑定具体的任务。 -->
+    <bean id="trigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="startDelay" value="3000"/>
+        <property name="repeatInterval" value="5000"/>
+    </bean>
+
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="trigger"/>
+            </list>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+
+
     <mvc:resources mapping="/assert/bootstrap/**" location="/assert/bootstrap/"/>
     <!--<mvc:resources mapping="/img/**" location="/img/"/>-->
     <mvc:resources mapping="/js/**" location="/js/"/>
@@ -33,14 +72,14 @@
         <!-- Web登录拦截器 -->
         <mvc:interceptor>
             <mvc:mapping path="**/**"/>
-            <mvc:exclude-mapping path="/jsp/**"/><!-- 防止循环重定向到首页 -->
+            <mvc:exclude-mapping path="/jsp1/**"/><!-- 防止循环重定向到首页 -->
 
             <bean class="com.exam.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/jsp/"/>
+        <property name="prefix" value="/jsp1/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 

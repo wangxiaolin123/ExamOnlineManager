@@ -53,5 +53,16 @@ public class ExamStudentDao {
         return sqlSessionTemplate.selectList(path+"getExamsByNumber",stuNumber);
     }
 
+    public List<ExamStudent> getExamsByExamID(Integer examID) throws SQLException{
+        return sqlSessionTemplate.selectList(path+"getExamsByExamID",examID);
+    }
+
+    public ExamStudent getExamsByExamIDStuNumber(Integer examID,String stuNumber) throws SQLException{
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("examID",examID);
+        map.put("stuNumber",stuNumber);
+        return sqlSessionTemplate.selectOne(path+"getExamsByExamIDStuNumber",map);
+    }
+
 
 }

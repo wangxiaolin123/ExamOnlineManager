@@ -10,6 +10,8 @@ public interface TeacherService {
 
     List<Exam> queryExamByTeacher(String teaNumber);
 
+    Exam getExamByID(Integer examID);
+
     ResultModel addExam(Exam exam);
 
     ResultModel deleteExam(Integer examID);
