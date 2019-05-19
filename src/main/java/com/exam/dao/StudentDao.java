@@ -79,4 +79,8 @@ public List<Student> getAllStudents() throws SQLException{
     public Student getStudnetByID(Integer stuID) throws SQLException {
         return  sqlSessionTemplate.selectOne(path+"getStudnetByID",stuID);
     }
+
+    public void deleteByStuNumbers(List stuNumbers) throws SQLException{
+        sqlSessionTemplate.delete(path+"deleteByStuNumbers",stuNumbers);
+    }
 }

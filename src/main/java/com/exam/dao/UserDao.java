@@ -68,4 +68,8 @@ public class UserDao {
     public void notifyByID(User user) throws SQLException {
         sqlSessionTemplate.update("com.exam.mapper.UserMapper.notifyByID",user);
     }
+
+    public void deleteByUserNames(List stuNumbers) throws SQLException{
+        sqlSessionTemplate.update("com.exam.mapper.UserMapper.deleteByUserNames",stuNumbers);
+    }
 }

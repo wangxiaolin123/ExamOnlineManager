@@ -291,6 +291,19 @@ public class TeacherServiceImpl implements TeacherService{
         return ResultModel.build(500,"数据删除失败");
     }
 
+    @Override
+    public ResultModel deleteStudents(List<String> stuNumbers) {
+
+        try {
+            userDao.deleteByUserNames(stuNumbers);
+            studentDao.deleteByStuNumbers(stuNumbers);
+            return ResultModel.ok();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ResultModel.build(500,"数据批量删除失败");
+    }
+
     private boolean updateUserAndStudnet(Student student){
 
         try {

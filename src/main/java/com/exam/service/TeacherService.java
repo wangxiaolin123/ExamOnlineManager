@@ -36,6 +36,8 @@ public interface TeacherService {
 
     ResultModel deleteStudent(String stuNumber);
 
+    ResultModel deleteStudents(List<String> stuNumbers);
+
     //ResultModel updateExamState(int examID, String state);
 
     //ResultModel queryExams(int examID,String teaNumber, String state);

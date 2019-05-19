@@ -271,9 +271,9 @@
     var $remove = $('#remove')
     var selections = []
 
-    function getIdSelections() {
+    function getStuNumberSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
+            return row.stuNumber
         })
     }
 
@@ -376,7 +376,7 @@
             function () {
                 $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
                 // save your data, here just save the current page
-                selections = getIdSelections()
+                selections = getStuNumberSelections()
                 // push or splice the selections if you want to save all data selections
             })
         $table.on('all.bs.table', function (e, name, args) {
@@ -384,12 +384,10 @@
         })
 
         $remove.click(function () {
-            var ids = getIdSelections()
+            var stuNumbers = getStuNumberSelections()
 
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            })
+            delStudents(stuNumbers);
+
             $remove.prop('disabled', true)
         })
     })
@@ -455,6 +453,7 @@
         $("form input").val("");
     }
 
+    //更新信息
     function updateStudent(row) {
 
         $("#updateStudentForm :input[name='stuID']").val(row.stuID);
@@ -507,6 +506,28 @@
         })
     }
 
+    //批量删除
+    function delStudents(stuNumbers) {
+
+        console.info(stuNumbers);
+        var params = {"stuNumbers":JSON.stringify(stuNumbers)};
+        //var params2 = new FormData($("#importStudentForm")[0])
+        //post请求添加数据
+        var url = "<%=basePath%>/teacher/deleteStudents.do";
+        $.post(url, params, function (data) {
+            if (data.status == 200) {
+                alert("删除成功");
+                $table.bootstrapTable('remove', {
+                    field: 'stuNumber',
+                    values: stuNumbers
+                })
+            } else {
+                alert(data.msg);
+                window.location.reload();
+            }
+        })
+
+    }
 
 </script>
 </body>

@@ -22,6 +22,14 @@
         WHERE `stuNumber` = #{stuNumber}
     </delete>
 
+    <delete id="deleteByStuNumbers" parameterType="java.util.List">
+        DELETE FROM `exam`.`student`
+        WHERE `stuNumber` IN
+        <foreach collection="list" item="stuNumber" open="(" separator="," close=")">
+            #{stuNumber}
+        </foreach>
+    </delete>
+
     <select id="getStudnetByID" parameterType="Integer" resultType="student">
         SELECT student.stuID,student.stuNumber,student.stuName,student.classID
         FROM student

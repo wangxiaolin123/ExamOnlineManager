@@ -1,6 +1,8 @@
 package com.exam.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.exam.domain.Exam;
 import com.exam.domain.Student;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -280,6 +283,28 @@ public class TeacherController {
 
         if(stuNumber!=null && stuNumber.length()>0){
             ResultModel res=teacherService.deleteStudent(stuNumber);
+            return res;
+        }
+        return ResultModel.build(500,"传入学号不合法");
+    }
+
+    @RequestMapping(value = "/deleteStudents.do",method = { RequestMethod.POST })
+    @ResponseBody
+    public ResultModel deleteStudents(@Param("stuNumbers")String stuNumbers){
+        //System.out.println("获取的数据为"+stuNumbers);
+
+        //stuNumbers=stuNumbers.substring(1,stuNumbers.length()-1);
+
+        if(stuNumbers.length()>0){
+
+            JSONArray stuArr=JSON.parseArray(stuNumbers);
+            List<String> stuList= new ArrayList<>();
+
+            for(int i=0;i<stuArr.size();i++){
+                stuList.add((String) stuArr.get(i));
+            }
+
+            ResultModel res=teacherService.deleteStudents(stuList);
             return res;
         }
         return ResultModel.build(500,"传入学号不合法");

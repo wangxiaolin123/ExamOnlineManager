@@ -66,4 +66,12 @@
 		DELETE FROM `exam`.`user` WHERE `username` = #{username}
 	</delete>
 
+    <delete id="deleteByUserNames" parameterType="String">
+		DELETE FROM `exam`.`user` 
+		WHERE `username` IN
+        <foreach collection="list" item="stuNumber" open="(" separator="," close=")">
+            #{stuNumber}
+        </foreach>
+	</delete>
+
 </mapper>

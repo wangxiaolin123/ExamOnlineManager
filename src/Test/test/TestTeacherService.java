@@ -11,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
@@ -44,6 +46,16 @@ public class TestTeacherService {
     public void TestdeleteStudnet() {
 
         teacherService.deleteStudent("1610121180");
+    }
+
+    @Test
+    public void TestdeleteStudnets() {
+        List<String> list=new ArrayList<>();
+
+        list.add(5+"");
+        list.add(8+"");
+
+        teacherService.deleteStudents(list);
     }
 
 }
