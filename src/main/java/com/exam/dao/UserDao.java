@@ -9,6 +9,7 @@ import com.exam.domain.User;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository("userDao")
@@ -29,6 +30,13 @@ public class UserDao {
         map.put("userID", userID);
         map.put("ipInfo", ipInfo);
         sqlSessionTemplate.update("com.exam.mapper.UserMapper.updateIpAddrByID",map);
+    }
+
+    public void updateIpAddrByNumber(String number,String ipInfo) throws SQLException{
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("number", number);
+        map.put("ipInfo", ipInfo);
+        sqlSessionTemplate.update("com.exam.mapper.UserMapper.updateIpAddrByNumber",map);
     }
 
     public void insertUser(User user) throws SQLException{
@@ -53,4 +61,11 @@ public class UserDao {
         sqlSessionTemplate.delete("com.exam.mapper.UserMapper.deleteByUserName",username);
     }
 
+    public void insertUsers(List<User>list) throws SQLException{
+        sqlSessionTemplate.insert("com.exam.mapper.UserMapper.insertUsers",list);
+    }
+
+    public void notifyByID(User user) throws SQLException {
+        sqlSessionTemplate.update("com.exam.mapper.UserMapper.notifyByID",user);
+    }
 }

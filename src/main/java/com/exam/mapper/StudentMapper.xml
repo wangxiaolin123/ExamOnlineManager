@@ -7,10 +7,26 @@
         VALUES (#{stuNumber}, #{stuName}, #{classID})
     </insert>
 
+
+    <insert id="insertStudents" parameterType="java.util.List">
+        INSERT INTO `exam`.`student`(`stuNumber`, `stuName`, `classID`)
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.stuNumber}, #{item.stuName}, #{item.classID})
+        </foreach>
+
+    </insert>
+
     <delete id="deleteByStuNumber" parameterType="String">
         DELETE FROM `exam`.`student`
         WHERE `stuNumber` = #{stuNumber}
     </delete>
+
+    <select id="getStudnetByID" parameterType="Integer" resultType="student">
+        SELECT student.stuID,student.stuNumber,student.stuName,student.classID
+        FROM student
+        WHERE student.stuID = #{stuID}
+    </select>
 
     <select id="getStudentByStuNumber" parameterType="String" resultType="student">
         SELECT student.stuID,student.stuNumber,student.stuName,student.classID
@@ -22,6 +38,12 @@
         SELECT student.stuID,student.stuNumber,student.stuName,student.classID
         FROM student
         WHERE student.classID = #{classID}
+    </select>
+
+
+    <select id="getAllStudents" resultType="student">
+        SELECT student.stuID,student.stuNumber,student.stuName,student.classID
+        FROM student
     </select>
 
     <update id="modifyByID" parameterType="student">

@@ -21,7 +21,8 @@
             `isAuto` = #{isAuto},
             `state` = #{state},
             `classID` = #{classID},
-             `isManager` = #{isManager}
+             `isManager` = #{isManager},
+             `pack` = #{pack}
         WHERE `examID` = #{examID}
     </update>
 
@@ -33,7 +34,8 @@
     </select>
 
     <select id="queryExamsByTeaNumberState" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,
+                exam.isAuto,exam.state,exam.classID,exam.isManager,exam.pack
         FROM exam
         WHERE   exam.teaNumber = #{teaNumber}
         AND exam.state = #{state}
@@ -41,7 +43,8 @@
     </select>
 
     <select id="queryExamsById" parameterType="Integer" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,
+                exam.isAuto,exam.state,exam.classID,exam.isManager,exam.pack
         FROM exam
         WHERE   exam.examID = #{examID}
     </select>
@@ -53,7 +56,8 @@
     </update>
 
     <select id="getExamsByState" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,
+                exam.isAuto,exam.state,exam.classID,exam.isManager,exam.pack
         FROM exam
         WHERE exam.state = #{state}
         ORDER BY exam.examID ASC
@@ -61,7 +65,8 @@
 
 
     <select id="getExamsForAllStates" resultType="exam">
-        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,exam.isAuto,exam.state,exam.classID
+        SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,
+                exam.isAuto,exam.state,exam.classID,exam.isManager,exam.pack
         FROM exam
         WHERE exam.state = #{state} AND exam.isManager = #{isManager}
         ORDER BY exam.examID ASC
@@ -79,6 +84,7 @@
             <if test="state != null">`state` = #{state},</if>
             <if test="classID != null">`classID` = #{classID},</if>
             <if test="isManager != null">`isManager` = #{isManager},</if>
+            <if test="pack != null">`pack` = #{pack},</if>
         </set>
         WHERE `examID` = #{examID}
     </update>

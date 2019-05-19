@@ -1,4 +1,6 @@
+import com.exam.dao.TeacherDao;
 import com.exam.domain.Exam;
+import com.exam.domain.Teacher;
 import com.exam.service.StudentService;
 import com.exam.utlis.ResultModel;
 import org.junit.Test;
@@ -7,20 +9,28 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-public class TestStudent {
+public class TestTeacherDao {
     @Resource
-    private StudentService studentService;
+    private TeacherDao teacherDao;
 
     @Test
-    public void  testStudentService(){
+    public void  test1(){
 
-        ResultModel res=studentService.getExamsByNumberState("1610121165","");
-        List<Exam> list=(List<Exam>)res.getData();
-        for(Exam e:list){
+
+        List<Teacher> list= null;
+        try {
+            list = teacherDao.getByIsAdmin(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(list.size()==0)
+        System.out.println(list);
+        for(Teacher e:list){
             System.out.println(e.toString());
         }
 

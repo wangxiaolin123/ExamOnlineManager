@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.exam.mapper.UserMapper">
+
     <select id="getUserByName" parameterType="String" resultType="com.exam.domain.User">
        	SELECT
        		`user`.userID,`user`.username,`user`.`password`,`user`.type,`user`.ip
@@ -21,24 +22,48 @@
 			user.type=#{type}
     </select>
 
-	<update id="updateIpAddrByID" >
+    <update id="notifyByID" parameterType="user">
+        UPDATE `exam`.`user`
+        <set>
+            <if test="username != null">`username` = #{username},</if>
+            <if test="password != null">`password` = #{password},</if>
+            <if test="type != null">`type` = #{type},</if>
+            <if test="ip != null">`ip` = #{ip},</if>
+        </set>
+        WHERE `userID` = #{userID}
+    </update>
+
+    <update id="updateIpAddrByID">
 		UPDATE `exam`.`user` SET `ip` = #{ipInfo} WHERE `userID` = #{userID}
 	</update>
 
-	<update id="updatePasswordByUserName" >
+    <update id="updateIpAddrByNumber">
+		UPDATE `exam`.`user` SET `ip` = #{ipInfo} WHERE `username` = #{number}
+	</update>
+
+    <update id="updatePasswordByUserName">
 		UPDATE `exam`.`user` SET `password` = #{password} WHERE `userName` = #{userName}
 	</update>
 
-	<update id="updateUserNameByUserName">
+    <update id="updateUserNameByUserName">
 		UPDATE `exam`.`user` SET `username` = #{newUserName} WHERE `userName` = #{oldUserName}
 	</update>
 
-	<insert id="insertUser" parameterType="user">
+    <insert id="insertUser" parameterType="user">
 		INSERT INTO `exam`.`user`(`username`, `password`, `type`)
 		VALUES (#{username}, #{password},#{type})
 	</insert>
 
-	<delete id="deleteByUserName" parameterType="String">
+    <insert id="insertUsers" parameterType="java.util.List">
+        INSERT INTO `exam`.`user`(`username`, `password`, `type`)
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.username}, #{item.password},#{item.type})
+        </foreach>
+    </insert>
+
+    <delete id="deleteByUserName" parameterType="String">
 		DELETE FROM `exam`.`user` WHERE `username` = #{username}
 	</delete>
+
 </mapper>

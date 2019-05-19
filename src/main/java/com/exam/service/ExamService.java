@@ -1,6 +1,7 @@
 package com.exam.service;
 
 import com.exam.domain.Exam;
+import com.exam.domain.ExamStudent;
 
 
 import java.util.Date;
@@ -17,12 +18,13 @@ public interface ExamService {
 
     public void Examining(Exam exam);
 
-    public void ForceBegin(Exam exam);
-
-
     public List<Exam> GetReadyExams(Integer minutes);
 
     public Map<String,Object> GetExamming(String stuNumber);
 
+    List<String> getStudent(Integer examID);
 
+    public boolean CleanExam(Exam exam);
+
+    void ExportExamInfo(Integer examID);
 }

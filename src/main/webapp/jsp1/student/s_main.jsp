@@ -133,12 +133,13 @@
 
 <script>
 
+var HostIp="localhost";
     //判断当前浏览器是否支持WebSocket
     var webSocket = null;
     if ('WebSocket' in window) {
-        webSocket = new WebSocket("ws://localhost:8080/exam/socket/" +${sessionScope.user.number});
+        webSocket = new WebSocket("ws://"+HostIp+":8080/exam/socket/" +${sessionScope.user.number});
     } else if ('MozWebSocket' in window) {
-        webSocket = new MozWebSocket("ws://localhost:8080/exam/socket/" + ${sessionScope.user.number});
+        webSocket = new MozWebSocket("ws://"+HostIp+":8080/exam/socket/" + ${sessionScope.user.number});
     } else {
         alert('Not support webSocket');
     }
@@ -150,20 +151,22 @@
     //接收推送的消息
     webSocket.onmessage = function (event) {
 
-        var rs=JSON.parse(event.data);
-        var notice=rs.data;
+        var res=JSON.parse(event.data);
+
+        var notice=res.data;
         console.info(notice);
         if(notice.signal=="start"){
-            alert("考试开始");
+            alert(notice.noticeTitle);
+            window.location.reload();
         }if(notice.signal=="end"){
-            alert("考试结束");
+            alert(notice.noticeTitle);
+            window.location.reload();
         }if(notice.signal=="notice"){
-            alert("考试通知")
+            alert(notice.noticeTitle);
+
+            $("#noticeContent").html(notice.noticeTitle+'<br>'+notice.noticeContent);
+
         }
-
-
-
-        $("#noticeContent").innerText="@@@@@@@@test";
     }
     //错误时
     webSocket.onerror = function (event) {
@@ -194,11 +197,12 @@
                 for (var i = 0; i < item.length; i++) {
                     var startTime = timeStamp2String(item[i].startTime);
                     var endTime = timeStamp2String(item[i].endTime);
-                    html += "<tr>";
+                    html += "<tr id='"+item[i].examID+"'>";
                     html += "<td>" + item[i].examID + "</td>";
                     html += "<td>" + item[i].examName + "</td>";
                     html += "<td>" + startTime + " 至 " + endTime + "</td>";
                     html += "<td>" + item[i].state + "</td>";
+                    if("underway"== item[i].state){
                     html += "<td class='list-inline'><li>"
                         + "<form action='<%=basePath%>/student/downloadPaper.do' method='post'>"
                         + "<div class='hidden'><input type='text' name='examName' value='"+item[i].examName+"'>"
@@ -206,6 +210,9 @@
                         + "<input type='submit' value='试卷下载'>"
                         + "</form></li>";
                     html += "<li><a href='javascript:void(0)' onclick='upAnswer(" + item[i].examID + ",${sessionScope.user.number})'>上传答案</a></li></td>";
+                    }else {
+                        html += "<td class='list-inline'>未在考试时间段内</td>";
+                    }
                     html += "</tr>";
                 }
                 $("#examList").html(html);

@@ -68,4 +68,15 @@ public class StudentDao {
         sqlSessionTemplate.update(path+"modifyByID",student);
     }
 
+    public void insertStudents(List<Student> list) throws SQLException{
+        sqlSessionTemplate.insert(path+"insertStudents",list);
+    }
+
+public List<Student> getAllStudents() throws SQLException{
+      return  sqlSessionTemplate.selectList(path+"getAllStudents");
+    }
+
+    public Student getStudnetByID(Integer stuID) throws SQLException {
+        return  sqlSessionTemplate.selectOne(path+"getStudnetByID",stuID);
+    }
 }

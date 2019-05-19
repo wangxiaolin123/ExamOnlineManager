@@ -35,6 +35,11 @@
 								</c:when>
 							</c:choose>
 						><a href="<%=path%>/teacher/exammanager.do">考试管理</a></li>
+						<c:if test="${sessionScope.user.isadmin ==true}">
+							<li>
+								<a href="<%=path%>/adminT/mainPage.do">系统管理</a>
+							</li>
+						</c:if>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:choose>

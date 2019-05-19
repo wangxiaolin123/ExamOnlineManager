@@ -35,6 +35,15 @@ public class Exam implements Serializable {
 
     private boolean isManager;
 
+    private boolean pack;
+
+    public boolean getPack() {
+        return pack;
+    }
+
+    public void setPack(boolean pack) {
+        this.pack = pack;
+    }
 
     public Integer getClassID() {
         return classID;
@@ -131,6 +140,7 @@ public class Exam implements Serializable {
                 ", state='" + state + '\'' +
                 ", classID=" + classID +
                 ", isManager=" + isManager +
+                ", pack=" + pack +
                 '}';
     }
 }

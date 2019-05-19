@@ -1,5 +1,7 @@
+import com.exam.dao.ExamDao;
 import com.exam.dao.TeacherDao;
 import com.exam.dao.UserDao;
+import com.exam.domain.Exam;
 import com.exam.domain.Student;
 import com.exam.domain.Teacher;
 import com.exam.domain.User;
@@ -26,16 +28,40 @@ public class ExamServiceTest {
 
     @Resource
     private ExamService examService;
+    @Resource
+    private ExamDao examDao;
 
     @Test
     public void test(){
 
         Map<String,Object> mapInfo=examService.GetExamming("1610121165");
+
+
         String teaNumber= (String) mapInfo.get("teaNumber");
+
         List<Student> students= (List<Student>) mapInfo.get("students");
+
         System.out.println(teaNumber);
         for (Student s:students)
             System.out.println(s.toString());
+    }
+
+
+    @Test
+    public void te1(){
+
+        Exam exam= null;
+        try {
+            exam = examDao.queryExamById(2);
+            System.out.println(exam.toString());
+            boolean f =examService.CleanExam(exam);
+            System.out.println(f);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
 

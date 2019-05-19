@@ -3,6 +3,8 @@ package com.exam.websocket;
 
 import com.alibaba.fastjson.JSONObject;
 import com.exam.domain.Notice;
+import com.exam.domain.Student;
+import com.exam.domain.User;
 import com.exam.service.ExamService;
 import com.exam.service.ExamServiceImpl;
 import com.exam.utlis.ResultModel;
@@ -19,6 +21,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -117,11 +120,17 @@ public class WebSocketServer {
 
         System.out.println("收到客户端的消息:{" + notice.toString() + "}");
 
-          /*  if ("all".equals(user)) {
-                sendMessageAll(notice);
-            } else {
-                sendtoUser(notice, user);
-            }*/
+        notice.setSignal("notice");
+        //ResultModel rs=ResultModel.build(200,"notice",notice);
+        if(webSS.examService!=null){
+            List<String> stuNumbers=webSS.examService.getStudent(notice.getExamID());
+            if(stuNumbers!=null){
+                for(String s:stuNumbers){
+
+                    NoticeService.sendInfoToUser(ResultModel.ok(notice),s);
+                }
+            }
+        }
 
     }
 
@@ -170,8 +179,8 @@ public class WebSocketServer {
         if (webSocketMap.get(ip) != null) {
             webSocketMap.get(ip).sendMessage(rs);
         } else {
-            //如果用户不在线则返回不在线信息给自己
-            sendtoUser(rs, ip);
+
+           System.out.println(UserIp+"不在线");
         }
     }
 

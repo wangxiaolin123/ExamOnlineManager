@@ -47,7 +47,7 @@ public class ExamDao {
         sqlSessionTemplate.update("com.exam.mapper.ExamMapper.modify",exam);
     }
 
-    public void updateExamById(Exam exam) {
+    public void updateExamById(Exam exam) throws SQLException{
         sqlSessionTemplate.update("com.exam.mapper.ExamMapper.updateExamById",exam);
     }
 

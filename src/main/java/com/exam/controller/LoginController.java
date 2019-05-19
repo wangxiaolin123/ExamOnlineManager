@@ -57,6 +57,7 @@ public class LoginController {
 			ResultModel res = this.userService.isLogin(loginUser);
 			session.setAttribute("user", res.getData());
 			System.out.println("用户登陆返回的信息 " + res.getData());
+
 			switch (inputSelect) {
 				case 1: {
 

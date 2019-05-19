@@ -65,4 +65,11 @@ public class ExamStudentDao {
     }
 
 
+    public List<String> getStuNumberByExam(Integer examID) throws SQLException{
+        return sqlSessionTemplate.selectList(path+"getStuNumberByExam",examID);
+    }
+
+    public List<Map<String, String>> getNumPathByExamID(Integer examID)  throws SQLException{
+        return sqlSessionTemplate.selectList(path+"getNumPathByExamID",examID);
+    }
 }

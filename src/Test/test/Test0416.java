@@ -13,12 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class Test0416 {
 
-    private static Logger logger=Logger.getLogger(Test0416.class);
 
     @Resource
     private UserService userService;
@@ -34,8 +35,6 @@ public class Test0416 {
         user1.setPassword("admin");
         user1.setType(1);
 
-        logger.info(user1.getUsername());
-
     }
 
     @Test
@@ -50,13 +49,33 @@ public class Test0416 {
     @Test
     public void TestUserDao() {
 
+        List<User> users=new ArrayList<>();
+        for(int i=0;i<5;i++){
+            User user=new User();
+            user.setUsername("用户"+i);
+            user.setPassword("密码"+i);
+            user.setType(3);
+            users.add(user);
+        }
+    }
+
+    @Test
+    public void TestNotifyID() {
 
         try {
-           userDao.deleteByUserName("teacher");
-        }catch (Exception e){
+            User user = new User();
+            user.setUserID(13);
+            user.setUsername("哈哈");
+            user.setPassword("密码");
+            user.setType(3);
+            user.setIp("123");
+            userDao.notifyByID(user);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     @Resource
     private  TeacherDao teacherDao;

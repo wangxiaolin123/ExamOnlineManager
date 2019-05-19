@@ -1,14 +1,22 @@
 package com.exam.domain;
 
-public class Student {
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.metadata.BaseRowModel;
+
+public class Student extends BaseRowModel {
     //stuID	int
+
     private Integer stuID;
     //stuNumber	char
+    @ExcelProperty(index = 0 , value = "学号")
     private String stuNumber;
     //stuName	varchar
+    @ExcelProperty(index = 1 , value = "姓名")
     private String stuName;
     //classID	int
+    @ExcelProperty(index = 2 , value = "班级")
     private Integer classID;
+
 
     public Integer getStuID() {
         return stuID;
@@ -42,6 +50,7 @@ public class Student {
         this.classID = classID;
     }
 
+
     @Override
     public String toString() {
         return "Student{" +
@@ -49,6 +58,28 @@ public class Student {
                 ", stuNumber='" + stuNumber + '\'' +
                 ", stuName='" + stuName + '\'' +
                 ", classID=" + classID +
+                ", onLine=" + onLine +
+                ", submit=" + submit +
                 '}';
+    }
+
+    private Boolean onLine;
+
+    private Boolean submit;
+
+    public Boolean getOnLine() {
+        return onLine;
+    }
+
+    public void setOnLine(Boolean onLine) {
+        this.onLine = onLine;
+    }
+
+    public Boolean getSubmit() {
+        return submit;
+    }
+
+    public void setSubmit(Boolean submit) {
+        this.submit = submit;
     }
 }

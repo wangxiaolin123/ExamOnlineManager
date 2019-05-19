@@ -41,11 +41,12 @@
 								href="<%=basePath%>/teacher/exammanager.do?teaNumber=${sessionScope.user.number}"
 								class="btn btn-default">考试管理</a>
 							<a
+									href="<%=basePath%>/teacher/studentmanager.do?teaNumber=${sessionScope.user.number}"
+									class="btn btn-default">学生信息管理</a>
+							<a
 									href=""
 									class="btn btn-default">查看正在进行的考试</a>
-							<button type="button" class="btn btn-default">编辑考试</button>
-							<button type="button" class="btn btn-default">查看考试情况</button>
-							<button type="button" class="btn btn-default">学生信息管理</button>
+							<button type="button" class="btn btn-default" >学生信息管理</button>
 							<button type="button" class="btn btn-default">解除学生登陆锁定</button>
 							<button type="button" class="btn btn-default">通知管理</button>
 							<button type="button" class="btn btn-default">考试结束</button>

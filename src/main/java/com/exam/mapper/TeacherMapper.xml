@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.exam.mapper.TeacherMapper">
 
+    <select id="getByIsAdmin" resultType="teacher">
+        SELECT  teacher.teaNumber,teacher.teaID,teacher.teaName,teacher.isadmin
+        FROM    teacher
+        WHERE   teacher.isadmin = #{isadmin}
+    </select>
+
     <select id="getTeachers" resultType="teacher">
         SELECT teacher.teaID,teacher.teaNumber,teacher.teaName,teacher.isadmin
         FROM teacher

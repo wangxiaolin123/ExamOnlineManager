@@ -2,6 +2,7 @@ package com.exam.dao;
 
 
 import com.exam.domain.Teacher;
+import org.apache.ibatis.session.SqlSessionException;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +41,9 @@ public class TeacherDao {
 
     public void deleteByteaNumber(String teaNumber) throws SQLException{
         sqlSessionTemplate.delete("com.exam.mapper.TeacherMapper.deleteByteaNumber",teaNumber);
+    }
+
+    public List<Teacher> getByIsAdmin(boolean isadmin) throws SQLException {
+       return sqlSessionTemplate.selectList("com.exam.mapper.TeacherMapper.getByIsAdmin",isadmin);
     }
 }
