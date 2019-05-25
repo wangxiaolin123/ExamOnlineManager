@@ -37,6 +37,16 @@ public class Exam implements Serializable {
 
     private boolean pack;
 
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    private String className;
+
     public boolean getPack() {
         return pack;
     }
@@ -141,6 +151,7 @@ public class Exam implements Serializable {
                 ", classID=" + classID +
                 ", isManager=" + isManager +
                 ", pack=" + pack +
+                ", className='" + className + '\'' +
                 '}';
     }
 }

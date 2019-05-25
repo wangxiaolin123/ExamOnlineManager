@@ -1,10 +1,7 @@
 import com.exam.dao.ExamDao;
 import com.exam.dao.TeacherDao;
 import com.exam.dao.UserDao;
-import com.exam.domain.Exam;
-import com.exam.domain.Student;
-import com.exam.domain.Teacher;
-import com.exam.domain.User;
+import com.exam.domain.*;
 import com.exam.service.AdminTService;
 import com.exam.service.ExamService;
 import com.exam.service.UserService;
@@ -59,11 +56,13 @@ public class ExamServiceTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
-
+    @Test
+    public void testExportStudentInfo(){
+        List<ExportStudentInfo> list=examService.ExportExamInfo(1);
+        for (ExportStudentInfo s:list)
+            System.out.println(s.toString());
+    }
 
 }

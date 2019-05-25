@@ -26,7 +26,7 @@ public class ExamDao {
      */
     public int insert(Exam exam) throws SQLException {
         int row=sqlSessionTemplate.insert("com.exam.mapper.ExamMapper.insert",exam);
-        return 0;
+        return row;
     }
 
     /**
@@ -83,7 +83,7 @@ public class ExamDao {
      * @throws SQLException
      */
     public Exam queryExamById(int examID) throws SQLException{
-        return (Exam)sqlSessionTemplate.selectOne("com.exam.mapper.ExamMapper.queryExamsById",examID);
+        return (Exam)sqlSessionTemplate.selectOne("com.exam.mapper.ExamMapper.queryExamById",examID);
     }
 
     /**

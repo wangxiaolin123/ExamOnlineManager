@@ -1,9 +1,6 @@
 package com.exam.service;
 
-import com.exam.dao.ExamDao;
-import com.exam.dao.ExamStudentDao;
-import com.exam.dao.StudentDao;
-import com.exam.dao.UserDao;
+import com.exam.dao.*;
 import com.exam.domain.*;
 import com.exam.utlis.FtpUtil;
 import com.exam.utlis.ResultModel;
@@ -34,6 +31,9 @@ public class ExamServiceImpl implements ExamService {
     @Resource
     private UserDao userDao;
 
+    @Resource
+    private ClassInfoDao classInfoDao;
+
 
     /**
      * 准备开始考试操作
@@ -58,7 +58,7 @@ public class ExamServiceImpl implements ExamService {
                 notice.setSignal("start");
 
 
-                NoticeService.sendInfoToUser(ResultModel.build(200,"signal",notice),exam.getTeaNumber());
+                NoticeService.sendInfoToUser(ResultModel.build(200, "signal", notice), exam.getTeaNumber());
 
                 //根据学号向考生推送考生开始信息
                 //websocket通信实现
@@ -74,8 +74,8 @@ public class ExamServiceImpl implements ExamService {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }else {
-            System.out.println("考试《"+exam.getExamName()+"》已开始");
+        } else {
+            System.out.println("考试《" + exam.getExamName() + "》已开始");
         }
 
     }
@@ -101,7 +101,7 @@ public class ExamServiceImpl implements ExamService {
             notice.setNoticeTitle("考试结束");
             notice.setSignal("end");
 
-            NoticeService.sendInfoToUser(ResultModel.build(200,"signal",notice),exam.getTeaNumber());
+            NoticeService.sendInfoToUser(ResultModel.build(200, "signal", notice), exam.getTeaNumber());
 
             List<String> stuNumbers = new ArrayList<>();
             for (ExamStudent es : esList) {
@@ -199,9 +199,9 @@ public class ExamServiceImpl implements ExamService {
                         if (student != null) {
                             //System.out.println("ExamService 学生"+student.toString());
 
-                            if(examStudent.getAnswerPath()!=null){
+                            if (examStudent.getAnswerPath() != null) {
                                 student.setSubmit(true);
-                            }else {
+                            } else {
                                 student.setSubmit(false);
                             }
                             students.add(student);
@@ -272,25 +272,52 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
-    public void ExportExamInfo(Integer examID) {
+    public List<ExportStudentInfo> ExportExamInfo(Integer examID) {
 
         try {
             List<ExamStudent> esList = examStudentDao.getExamsByExamID(examID);
-            List<Map<String, Object>> mapList = new ArrayList<>();
+            List<ExportStudentInfo> list = new ArrayList<>();
             for (ExamStudent es : esList) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("stuNumber", es.getStuNumber());//学号
-                map.put("answerTime", es.getAnswerTime());//最后提交时间
+                ExportStudentInfo studentInfo = new ExportStudentInfo();
+
+                studentInfo.setStuNumber(es.getStuNumber());
+                studentInfo.setAnswerTime(es.getAnswerTime());
+
                 Student student = studentDao.getStudentByStuNumber(es.getStuNumber());
-                map.put("stuName", student.getStuName());//姓名
-                map.put("classID", student.getClassID());//班级id
-                mapList.add(map);
+                studentInfo.setStuName(student.getStuName());
+                String className = classInfoDao.getClassNameByID(student.getClassID());
+                studentInfo.setClassName(className);
+                 list.add(studentInfo);
             }
-//mapList为最后信息等待转换为Excel
+
+            return list;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
 
+    }
+
+    @Override
+    public ResultModel addAdditionStudent(Integer examID, String stuNumber, String stuName) {
+
+        try {
+            Student student=studentDao.getStudentByStuNumber(stuNumber);
+            if(student==null)
+                return ResultModel.build(500,"学生信息不存在");
+           if(!student.getStuName().equals(stuName)){
+               return ResultModel.build(500,"学生姓名不匹配");
+           }
+           ExamStudent examStudent=new ExamStudent();
+           examStudent.setExamID(examID);
+           examStudent.setStuNumber(stuNumber);
+           examStudentDao.insert(examStudent);
+
+           return ResultModel.ok();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  ResultModel.build(500,"学生信息添加失败");
     }
 
 

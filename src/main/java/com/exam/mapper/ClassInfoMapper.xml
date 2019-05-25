@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exam.mapper.ClassInfoMapper">
+
+    <insert id="insert" parameterType="classInfo">
+        INSERT INTO `exam`.`class`(`className`)
+        VALUES (#{className})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM `exam`.`class` WHERE `classID` = #{classID}
+    </delete>
+
+    <update id="modify" parameterType="classInfo">
+        UPDATE `exam`.`class`
+        SET `className` = #{className}
+        WHERE `classID` = #{classID}
+    </update>
+
+    <select id="queryClassInfos" resultType="classInfo">
+        SELECT  class.classID,class.className
+        FROM    class
+    </select>
+
+    <select id="getClassNameByID" resultType="String">
+        SELECT  class.className
+        FROM    class
+        WHERE   class.classID = #{classID}
+    </select>
+
+</mapper>

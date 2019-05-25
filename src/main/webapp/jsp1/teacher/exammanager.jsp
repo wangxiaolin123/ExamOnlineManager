@@ -65,7 +65,7 @@
                         </td>
                         <td>${item.isAuto}</td>
                         <td>${item.state}</td>
-                        <td>${item.classID}</td>
+                        <td>${item.className}</td>
                         <td class="list-inline">
                             <li><a href="javascript:void(0)" onclick="upPaper(this)">上传试卷</a></li>
                             <li><a href="javascript:void(0)" onclick="editExam(this)">修改</a></li>
@@ -122,12 +122,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">选择班级</label>
                         <div class="col-sm-10">
-                            <select name="classID" class="form-control">
-                                <option value=1>1</option>
-                                <option value=2>2</option>
-                                <option value=3>3</option>
-                                <option value=4>4</option>
-                                <option value=5>5</option>
+                            <select id="addClass" name="classID" class="selector form-control">
                             </select>
                         </div>
                     </div>
@@ -201,12 +196,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">选择班级</label>
                         <div class="col-sm-10">
-                            <select name="classID" class="form-control">
-                                <option value=1>1</option>
-                                <option value=2>2</option>
-                                <option value=3>3</option>
-                                <option value=4>4</option>
-                                <option value=5>5</option>
+                            <select id="updateClass" name="classID" class="selector form-control">
+
                             </select>
                         </div>
                     </div>
@@ -290,6 +281,9 @@
 
 <script type="text/javascript">
 
+    $(function () {
+        addClassSelects();
+    })
 
 
     //时间控件初始化
@@ -375,6 +369,10 @@
 
         var tr = $(obj).parent().parent().parent();
         //将获取的该行的id值填充到模态框的文框中，文本框的ID为itemmodalid，其他的数据也是如此处理}
+
+
+        var className=tr.find("td:eq(5)").text();
+        $("#updateClass option[text='"+className+"']").attr("selected", true);
         $("#updateExamForm :input[name='examID']").val(tr.find("td:eq(0)").text());
         $("#updateExamForm :input[name='examName']").val(tr.find("td:eq(1)").find("a:eq(0)").text());
         //$("#updateExamForm :input[name='startTime']").val(tr.find("td:eq(4)").find("en:eq(0)").text());
@@ -452,6 +450,21 @@
         $("form input[name='isAdmin']").removeAttr("checked");
     }
 
+    //获取班级对应的名称
+    function addClassSelects() {
+
+        var url="<%=basePath%>/teacher/getClassSelects.do";
+        $.get(url,function(res) {
+
+            var list=res.data;
+            var selectOption= "";
+
+            $.each(list, function (index, item) {
+                selectOption += "<option value=\"" + item.classID + "\" text=\""+item.className +"\">" + item.className + "</option>";
+            })
+           $('.selector').html(selectOption);
+        })
+    }
 
 
 </script>

@@ -2,6 +2,7 @@ package com.exam.dao;
 
 
 import com.exam.domain.Student;
+import org.apache.ibatis.jdbc.SQL;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -83,4 +84,5 @@ public List<Student> getAllStudents() throws SQLException{
     public void deleteByStuNumbers(List stuNumbers) throws SQLException{
         sqlSessionTemplate.delete(path+"deleteByStuNumbers",stuNumbers);
     }
+
 }

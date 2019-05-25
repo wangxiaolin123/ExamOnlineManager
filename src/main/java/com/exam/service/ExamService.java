@@ -2,6 +2,9 @@ package com.exam.service;
 
 import com.exam.domain.Exam;
 import com.exam.domain.ExamStudent;
+import com.exam.domain.ExportStudentInfo;
+import com.exam.domain.Student;
+import com.exam.utlis.ResultModel;
 
 
 import java.util.Date;
@@ -26,5 +29,8 @@ public interface ExamService {
 
     public boolean CleanExam(Exam exam);
 
-    void ExportExamInfo(Integer examID);
+    List<ExportStudentInfo> ExportExamInfo(Integer examID);
+
+
+    ResultModel addAdditionStudent(Integer examID, String stuNumber, String stuName);
 }

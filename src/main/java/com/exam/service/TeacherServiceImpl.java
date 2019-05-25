@@ -5,6 +5,7 @@ import com.exam.dao.ExamStudentDao;
 import com.exam.dao.StudentDao;
 import com.exam.dao.UserDao;
 import com.exam.domain.Exam;
+import com.exam.domain.ExamStudent;
 import com.exam.domain.Student;
 import com.exam.domain.User;
 import com.exam.exception.ExcelException;
@@ -37,6 +38,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public List<Exam> queryExamByTeacher(String teaNumber) {
+
         try {
             List<Exam> list=examDao.queryExamsByTeaNumber(teaNumber);
             return list;
@@ -62,6 +64,24 @@ public class TeacherServiceImpl implements TeacherService{
     public ResultModel addExam(Exam exam) {
         try{
             examDao.insert(exam);
+
+            System.out.println("添加考试"+exam);
+            //插入es表
+            List<Student> studentList=studentDao.queryStudentsByClass(exam.getClassID());
+            if(studentList==null || studentList.size()==0)
+                return ResultModel.build(500,"该班级暂时未分配学生");
+            List<ExamStudent> esList=new ArrayList<>();
+            for(int i=0;i<studentList.size();i++){
+                Student student=studentList.get(i);
+                ExamStudent es=new ExamStudent();
+
+                es.setExamID(exam.getExamID());
+                es.setStuNumber(student.getStuNumber());
+
+                esList.add(es);
+            }
+
+            examStudentDao.insertBatch(esList);
             return ResultModel.ok();
         }catch (SQLException e){
             e.printStackTrace();
@@ -324,8 +344,6 @@ public class TeacherServiceImpl implements TeacherService{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return false;
     }
 

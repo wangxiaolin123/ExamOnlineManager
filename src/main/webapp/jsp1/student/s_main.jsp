@@ -133,13 +133,13 @@
 
 <script>
 
-var HostIp="localhost";
+    var HostIpPort="${sessionScope.HostIpPort}";
     //判断当前浏览器是否支持WebSocket
     var webSocket = null;
     if ('WebSocket' in window) {
-        webSocket = new WebSocket("ws://"+HostIp+":8080/exam/socket/" +${sessionScope.user.number});
+        webSocket = new WebSocket("ws://"+HostIpPort+"/exam/socket/" +${sessionScope.user.number});
     } else if ('MozWebSocket' in window) {
-        webSocket = new MozWebSocket("ws://"+HostIp+":8080/exam/socket/" + ${sessionScope.user.number});
+        webSocket = new MozWebSocket("ws://"+HostIpPort+"/exam/socket/" + ${sessionScope.user.number});
     } else {
         alert('Not support webSocket');
     }

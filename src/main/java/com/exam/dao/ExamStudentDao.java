@@ -72,4 +72,8 @@ public class ExamStudentDao {
     public List<Map<String, String>> getNumPathByExamID(Integer examID)  throws SQLException{
         return sqlSessionTemplate.selectList(path+"getNumPathByExamID",examID);
     }
+
+    public void insertBatch(List<ExamStudent> esList) throws SQLException {
+        sqlSessionTemplate.insert(path+"insertBatch",esList);
+    }
 }

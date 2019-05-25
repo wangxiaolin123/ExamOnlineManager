@@ -118,7 +118,7 @@
                         <button class="btn-default" id="forceBeginExam">强制开启考考试</button>
                     </dd>
                         <dd>
-                            <button class="btn-default">添加额外考生</button>
+                            <button class="btn-default" id="btn_import">添加额外考生</button>
                         </dd>
                     </c:when>
                     <c:when test="${sessionScope.examInfo.state == 'underway'}">
@@ -150,7 +150,7 @@
 
                 </c:choose>
                 <dt>考生班级</dt>
-                <dd>${sessionScope.examInfo.classID}</dd>
+                <dd>${sessionScope.examInfo.className}</dd>
             </dl>
         </div>
         <div class="col-md-4 column">
@@ -200,6 +200,58 @@
     </div>
 </div>
 
+<!--单个导入-->
+<div class="modal fade" data-keyboard="false" id="importStudentModel"
+     data-backdrop="static" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title">
+                    导入待考试学生
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="importStudentForm" action="#"
+                      class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">学号</label>
+                        <div class="col-sm-10">
+                            <input name="stuNumber" type="text"
+                                   class="form-control" placeholder="请输入学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input name="stuName" type="text" class="form-control" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
+                        <input name="examID" type="text" value="${sessionScope.examInfo.examID}">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    取消
+                </button>
+                <button id="importStudent" type="button"
+                        class="btn btn-primary">
+                    添加
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!--通知-->
 <div class="modal fade" data-keyboard="false" id="unIpModel"
@@ -247,13 +299,13 @@
 
 <script type="text/javascript">
 
-    var HostIp="localhost"
+    var HostIpPort= "${sessionScope.HostIpPort}";
     //判断当前浏览器是否支持WebSocket
     var webSocket = null;
     if ('WebSocket' in window) {
-        webSocket = new WebSocket("ws://"+HostIp+":8080/exam/socket/" + ${sessionScope.user.number});
+        webSocket = new WebSocket("ws://"+HostIpPort+"/exam/socket/${sessionScope.user.number}");
     } else if ('MozWebSocket' in window) {
-        webSocket = new MozWebSocket("ws://"+HostIp+":8080/exam/socket/" +${sessionScope.user.number});
+        webSocket = new MozWebSocket("ws://"+HostIpPort+"/exam/socket/${sessionScope.user.number}");
     } else {
         alert('Not support webSocket');
     }
@@ -442,6 +494,38 @@
             }
         })
     })
+
+    //单个导入
+    $("#btn_import").click(function () {
+        //开启模态框
+        $('#importStudentModel').modal('toggle');
+    })
+    $("#importStudent").click(function () {
+        //获取数据
+        var params = $("#importStudentForm").serialize();
+        //var params2 = new FormData($("#importStudentForm")[0])
+        //post请求添加数据
+        var url = "<%=basePath%>/teacher/importAdditionStudent.do";
+        $.post(url, params, function (data) {
+            if (data.status == 200) {
+                alert("成功导入");
+                window.location.reload();
+            } else {
+                alert(data.msg);
+            }
+        })
+        //提交成功，列表项添加该数据
+        $('#importStudentModel').modal('toggle');
+        //数据清空
+        clearForm();
+    })
+
+    //清空表单
+    function clearForm() {
+        $("form input").val("");
+    }
+
+
 </script>
 
 </body>

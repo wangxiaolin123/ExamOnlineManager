@@ -1,12 +1,16 @@
 package com.exam.controller;
 
 
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.exam.domain.ClassInfo;
 import com.exam.domain.Exam;
+import com.exam.domain.ExportStudentInfo;
 import com.exam.domain.Student;
 import com.exam.exception.ExcelException;
+import com.exam.service.ClassInfoService;
 import com.exam.service.ExamService;
 import com.exam.service.TeacherService;
 import com.exam.service.UserService;
@@ -39,6 +43,8 @@ public class TeacherController {
     private ExamService examService;
     @Resource
     private UserService userService;
+    @Resource
+    private ClassInfoService classInfoService;
 
     @RequestMapping("/mainPage.do")
 	public String show() {
@@ -192,17 +198,21 @@ public class TeacherController {
 
     }
 
-    @RequestMapping(value = "/downloadUpInfo.do")
+    @RequestMapping(value = "/downloadUpInfo.do",method=RequestMethod.POST)
     public void downloadUpInfo(@RequestParam(value = "examName") String examName, @RequestParam(value = "examID")Integer examID, HttpServletResponse response){
-
-        //System.out.println(examID+examName);
-
-        String dirPath="/public/"+examID+"/";
-
         //导出提交信息
-        examService.ExportExamInfo(examID);
+        List<ExportStudentInfo> list=examService.ExportExamInfo(examID);
+        for(ExportStudentInfo e:list)
+            System.out.println(e.toString());
+        if(list!=null){
+            try {
+                ExcelUtil.writeExcel(response,list,examName+"学生提交情况","sheet1",ExcelTypeEnum.XLSX,ExportStudentInfo.class);
 
-        //System.out.println("下载完毕");
+            } catch (Exception e) {
+                System.out.println("excel导出错误");
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -310,4 +320,28 @@ public class TeacherController {
         return ResultModel.build(500,"传入学号不合法");
     }
 
+
+    @RequestMapping(value = "/getClassSelects.do",method = { RequestMethod.GET})
+    @ResponseBody
+    public ResultModel getClassSelects(){
+
+       ResultModel res=classInfoService.getAllClassInfo();
+       if(res!=null)
+           return res;
+
+        return ResultModel.build(500,"获取班级信息失败");
+    }
+
+
+    @RequestMapping(value = "/importAdditionStudent.do",method=RequestMethod.POST)
+    @ResponseBody
+    public ResultModel importAdditionStudent(@Param(value = "examID")Integer examID,
+                                             @Param(value = "stuNumber")String stuNumber,
+                                             @Param(value = "stuName")String stuName){
+        System.out.println(examID+stuNumber+stuName);
+
+            ResultModel res=examService.addAdditionStudent(examID,stuNumber,stuName);
+            return  res;
+
+    }
 }

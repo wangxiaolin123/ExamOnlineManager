@@ -4,6 +4,7 @@ import com.exam.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -95,7 +96,17 @@ public class TestStudentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void TestGetClassID(){
+        try {
+            List<Student> list=studentDao.queryStudentsByClass(1);
+            for(Student s:list)
+                System.out.println(s);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

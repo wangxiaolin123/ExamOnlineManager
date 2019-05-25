@@ -1,5 +1,6 @@
 import com.exam.dao.ExamStudentDao;
 import com.exam.domain.Exam;
+import com.exam.domain.ExamStudent;
 import com.exam.service.StudentService;
 import com.exam.utlis.ResultModel;
 import org.junit.Test;
@@ -45,7 +46,18 @@ public class TestExamStudent {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void  test3(){
 
+        try{
+            ExamStudent es=new ExamStudent();
+            es.setExamID(6);
+            es.setStuNumber("1610121165");
+            examStudentDao.insert(es);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

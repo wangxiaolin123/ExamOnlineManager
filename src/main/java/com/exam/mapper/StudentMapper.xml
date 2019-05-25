@@ -36,6 +36,7 @@
         WHERE student.stuID = #{stuID}
     </select>
 
+
     <select id="getStudentByStuNumber" parameterType="String" resultType="student">
         SELECT student.stuID,student.stuNumber,student.stuName,student.classID
         FROM student

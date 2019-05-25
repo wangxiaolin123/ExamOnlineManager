@@ -21,7 +21,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-	
+
+		public static String HostIpPort="127.0.0.1:8080";//测试
+	//public static String HostIpPort="47.102.124.211:80";//实际环境
+
 	@Resource
     private UserService userService;
 	@Resource
@@ -56,6 +59,7 @@ public class LoginController {
 		try {
 			ResultModel res = this.userService.isLogin(loginUser);
 			session.setAttribute("user", res.getData());
+			session.setAttribute("HostIpPort", HostIpPort);
 			System.out.println("用户登陆返回的信息 " + res.getData());
 
 			switch (inputSelect) {

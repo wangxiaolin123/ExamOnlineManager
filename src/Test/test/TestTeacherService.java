@@ -1,3 +1,4 @@
+import com.exam.domain.Exam;
 import com.exam.domain.Student;
 import com.exam.domain.Teacher;
 import com.exam.domain.User;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -56,6 +58,24 @@ public class TestTeacherService {
         list.add(8+"");
 
         teacherService.deleteStudents(list);
+    }
+
+    @Test
+    public void TestAddExam(){
+
+        Exam exam= new Exam();
+        exam.setTeaNumber("1010120009");
+        exam.setIsAuto(true);
+        exam.setExamName("大数据开发4");
+        exam.setStartTime(new Date());
+        exam.setEndTime(new Date());
+        exam.setState("before");
+        exam.setIsManager(false);
+
+        exam.setClassID(1);
+        teacherService.addExam(exam);
+
+
     }
 
 }

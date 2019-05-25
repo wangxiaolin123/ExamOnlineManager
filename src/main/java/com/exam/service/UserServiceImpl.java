@@ -37,21 +37,22 @@ public class UserServiceImpl implements UserService {
 
             }
 
-            if(user.getUsername().equals("admin")){
+            if (user.getUsername().equals("admin")) {
 
-                if(!user.getPassword().equals("admin")){
+                if (!user.getPassword().equals("admin")) {
                     throw new UserException("默认管理员密码错误！");
-                }else if(user.getType()!=1){
+                } else if (user.getType() != 1) {
                     throw new UserException("默认管理员类型错误！");
-                }else if(isExistAdmin()){
+                } else if (isExistAdmin()) {
                     throw new UserException("系统已经存在管理员用户,默认管理失效！");
-                }else {
+                } else {
                     //系统没有管理员，默认管理员生效
-                    Map<String,Object> map=new HashMap<String, Object>();
-                    map.put("number","admin");
-                    map.put("name","默认管理员");
-                    map.put("isadmin",true);
-                    map.put("ip",user.getIp());
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("number", "admin");
+                    map.put("name", "默认管理员");
+                    map.put("isadmin", true);
+                    map.put("ip", user.getIp());
+
 
                     return ResultModel.ok(map);
 
@@ -65,63 +66,105 @@ public class UserServiceImpl implements UserService {
             if (user1 == null) {
                 throw new UserException("用户名不存在！");
             } else {
+                //密码匹配
                 String md5_password = new MD5_Encoding().getMD5ofStr(user.getPassword());
                 if (!md5_password.equals(user1.getPassword())) {
                     throw new UserException("密码错误！");
                 } else {
-                    if (user1.getType() != user.getType() && user.getType()==3) {
-                        throw new UserException("类型错误！");
-                    } else {
+                    //类型匹配
 
-                        if (user1.getIp() == null) {
+                    if (user1.getType() == user.getType()) {
 
-                            userDao.updateIpAddrByID(user1.getUserID(),user.getIp());
-                            user1.setIp(user.getIp());
+                        //学生匹配
+                        if (user1.getType() == 3) {
 
-                        }
-                        if(user1.getType()==3){
+                            if (user1.getIp() == null) {
 
-                            if (user.getIp().equals(user1.getIp())) {
                                 user1.setIp(user.getIp());
-                                Student student=studentDao.getStudentByStuNumber(user.getUsername());
-                                Map<String,String> map=new HashMap<String, String>();
-                                map.put("number",student.getStuNumber());
-                                map.put("name",student.getStuName());
-
-                                //实验测试使用
-                                map.put("ip",user.getIp());
-
-                                return ResultModel.ok(map);
-
-                            } else {
-                                throw new UserException("IP分配错误，请联系任课教师或管理员！");
-                            }
-                        }else {
-
-                            userDao.updateIpAddrByID(user1.getUserID(),user.getIp());
-                            user1.setIp(user.getIp());
-                            Map<String,Object> map=new HashMap<String, Object>();
-
-                                Teacher teacher=teacherDao.getTeacherByTeaNumber(user1.getUsername());
-                                if(!teacher.getIsadmin()&& user.getType()==1){
-                                    throw new UserException("抱歉，您没有管理员权限！");
+                                try {
+                                    userDao.updateIpAddrByID(user1.getUserID(), user.getIp());
+                                } catch (SQLException ex) {
+                                    ex.printStackTrace();
                                 }
 
-                                map.put("number",teacher.getTeaNumber());
-                                map.put("name",teacher.getTeaName());
-                                map.put("isadmin",teacher.getIsadmin());
+                            } else if (!user1.getIp().equals(user.getIp())) {
+                                throw new UserException("IP分配错误，请联系任课教师或管理员！");
+                            }
 
-                                //实验测试使用
-                                map.put("ip",user.getIp());
+                            Student student = null;
+                            try {
+                                student = studentDao.getStudentByStuNumber(user.getUsername());
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                            Map<String, String> map = new HashMap<String, String>();
+                            map.put("number", student.getStuNumber());
+                            map.put("name", student.getStuName());
+                            //实验测试使用
+                            map.put("ip", user1.getIp());
+                            return ResultModel.ok(map);
+
+                        } else {
+                            //教师管理员匹配
+
+                            user1.setIp(user.getIp());
+                            userDao.updateIpAddrByID(user1.getUserID(), user.getIp());
+
+                            Map<String, Object> map = new HashMap<String, Object>();
+
+                            Teacher teacher = teacherDao.getTeacherByTeaNumber(user1.getUsername());
+
+                            /*//无管理员权限
+                            if (!teacher.getIsadmin() && user.getType() == 1) {
+                                throw new UserException("抱歉，您没有管理员权限！");
+                            }*/
+
+                            map.put("number", teacher.getTeaNumber());
+                            map.put("name", teacher.getTeaName());
+                            map.put("isadmin", teacher.getIsadmin());
+
+                            //实验测试使用
+                            map.put("ip", user.getIp());
 
                             return ResultModel.ok(map);
                         }
 
+                    }else {
 
+
+                        //进行分类讨论
+                        //非学生
+                        if(user.getType()!=3 && user1.getType()!=3){
+
+                            user1.setIp(user.getIp());
+                            userDao.updateIpAddrByID(user1.getUserID(), user.getIp());
+
+                            Map<String, Object> map = new HashMap<String, Object>();
+
+                            Teacher teacher = teacherDao.getTeacherByTeaNumber(user1.getUsername());
+
+                            //无管理员权限
+                            if (!teacher.getIsadmin() && user.getType() == 1) {
+                                throw new UserException("抱歉，您没有管理员权限！");
+                            }
+
+                            map.put("number", teacher.getTeaNumber());
+                            map.put("name", teacher.getTeaName());
+                            map.put("isadmin", teacher.getIsadmin());
+
+                            //实验测试使用
+                            map.put("ip", user.getIp());
+
+                            return ResultModel.ok(map);
+
+                        }else {
+                            throw new UserException("类型错误！");
+                        }
 
                     }
                 }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -134,11 +177,11 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public boolean isExistAdmin(){
+    public boolean isExistAdmin() {
 
         try {
-            List<Teacher> teachers=teacherDao.getByIsAdmin(true);
-            if(teachers.size()==0)
+            List<Teacher> teachers = teacherDao.getByIsAdmin(true);
+            if (teachers.size() == 0)
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -146,7 +189,6 @@ public class UserServiceImpl implements UserService {
 
         return true;
     }
-
 
 
 }
