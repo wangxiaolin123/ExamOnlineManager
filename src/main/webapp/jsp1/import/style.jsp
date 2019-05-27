@@ -30,7 +30,7 @@
 <!-- Bootstrap core JavaScript
    ================================================== -->
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="<%=path%>/js/jq1.12.4/jquery.min.js"></script>
+<script src="<%=path%>/js/jquery-3.3.1.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="<%=path%>/js/bootstrap.min.js"></script>
 <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
@@ -40,7 +40,3 @@
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
 </head>
-<body style="margin: 0px; padding: 0px;">
-
-</body>
-</html>

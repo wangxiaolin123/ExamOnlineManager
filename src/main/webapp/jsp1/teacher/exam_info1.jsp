@@ -22,10 +22,7 @@
     <title>main</title>
 
     <c:import url="../import/style.jsp"></c:import>
-    <!-- 导入js css等 -->
     <script src="<%=path%>/js/sco.countdown.js"></script>
-
-</head>
 
 <body>
 
@@ -34,67 +31,13 @@
     <c:param name="data">main</c:param>
 </c:import>
 <!--end 头部-->
+距离考试开始还有: <div id="endTimeCount"></div>
+<script>
+    $("#endTimeCount").scojs_countdown({until: 1558850400});
+</script>
 
 <div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <button class="btn-default" id="addNotice">发布通知</button>
 
-            <!--通知-->
-            <div class="modal fade" data-keyboard="false" id="noticeModel"
-                 data-backdrop="static" tabindex="-1" role="dialog"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close"
-                                    data-dismiss="modal" aria-hidden="true">×
-                            </button>
-                            <h4 class="modal-title">
-                                发布通知
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            <form id="noticeForm" action="#"
-                                  class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">标题</label>
-                                    <div class="col-sm-10">
-                                        <input name="noticeTitle" id="noticeTitle" type="text"
-                                               class="form-control" placeholder="请输入通知标题">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">内容</label>
-                                    <div class="col-sm-10">
-                                        <input name="noticeContent" id="noticeContent" type="text"
-                                               class="form-control" placeholder="请输入通知内容">
-                                    </div>
-                                </div>
-
-                            </form>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                    data-dismiss="modal">
-                                取消
-                            </button>
-                            <button id="noticeSend" type="button"
-                                    class="btn btn-primary">
-                                发布
-                            </button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-
-        </div>
-    </div>
     <div class="row clearfix">
         <div class="col-md-4 column">
             <dl>
@@ -113,7 +56,7 @@
                         <dd>
                             距离考试开始还有: <div id="startTimeCount"></div>
                             <script>
-                                $("#startTimeCount").scojs_countdown({until: ${sessionScope.examInfo.startTime.getTime()/1000}});
+                                $("#startTimeCount").scojs_countdown({unitl: 1558850400})
                             </script>
                         </dd>
                         <dd>
@@ -125,10 +68,6 @@
                     </c:when>
                     <c:when test="${sessionScope.examInfo.state == 'underway'}">
                         <dd>
-                            距离考试结束还有: <div id="endTimeCount"></div>
-                            <script>
-                                $("#endTimeCount").scojs_countdown({until: ${sessionScope.examInfo.endTime.getTime()/1000}});
-                            </script>
 
                         </dd>
                         <dd>
@@ -162,150 +101,8 @@
                 <dd>${sessionScope.examInfo.className}</dd>
             </dl>
         </div>
-        <div class="col-md-4 column">
-
-            <div class="col-md-12">
-                <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">
-                        <span class="label label-info" id="submitInfo">
-                            考试提交情况:<br>
-                            0 人已提交 所有人未提交
-                        </span>
-                    </h4>
-                </a>
-                <ul class="list-group">
-
-                    <div id="alreadyUpShow">
-
-                    </div>
-                    <div id="notUpShow">
-
-                    </div>
-                </ul>
-            </div>
-
-        </div>
-        <div class="col-md-4 column" id="onlineCount">
-            <div class="col-md-12">
-                <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">
-                        <span class="label label-info" id="onLineInfo">
-                            在线情况:<br>
-                            0 人在线 所有人离线
-                        </span>
-                    </h4>
-                </a>
-                <ul class="list-group">
-                    <div id="onLineShow">
-
-                    </div>
-                    <div id="offLineShow">
-
-                    </div>
-                </ul>
-            </div>
-
-        </div>
     </div>
 </div>
-
-<!--单个导入-->
-<div class="modal fade" data-keyboard="false" id="importStudentModel"
-     data-backdrop="static" tabindex="-1" role="dialog"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">×
-                </button>
-                <h4 class="modal-title">
-                    导入待考试学生
-                </h4>
-            </div>
-            <div class="modal-body">
-                <form id="importStudentForm" action="#"
-                      class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">学号</label>
-                        <div class="col-sm-10">
-                            <input name="stuNumber" type="text"
-                                   class="form-control" placeholder="请输入学号">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">姓名</label>
-                        <div class="col-sm-10">
-                            <input name="stuName" type="text" class="form-control" placeholder="请输入姓名">
-                        </div>
-                    </div>
-                    <div class="form-group hidden">
-                        <input name="examID" type="text" value="${sessionScope.examInfo.examID}">
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
-                    取消
-                </button>
-                <button id="importStudent" type="button"
-                        class="btn btn-primary">
-                    添加
-                </button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<!--通知-->
-<div class="modal fade" data-keyboard="false" id="unIpModel"
-     data-backdrop="static" tabindex="-1" role="dialog"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">×
-                </button>
-                <h4 class="modal-title">
-                    解绑指定学生Ip
-                </h4>
-            </div>
-            <div class="modal-body">
-                <form id="unIpForm" action="#"
-                      class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">学号</label>
-                        <div class="col-sm-10">
-                            <input name="stuNumber" type="text"
-                                   class="form-control" placeholder="请输入学生学号">
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
-                    取消
-                </button>
-                <button id="unIpSend" type="button"
-                        class="btn btn-primary">
-                    解绑
-                </button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
 <script type="text/javascript">
 
     var HostIpPort = "${sessionScope.HostIpPort}";

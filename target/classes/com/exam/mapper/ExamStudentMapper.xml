@@ -7,6 +7,15 @@
         VALUES (#{stuNumber}, #{examID}, #{answerPath}, #{answerTime})
     </insert>
 
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO `exam`.`exam_student`(`stuNumber`, `examID`)
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.stuNumber}, #{item.examID})
+        </foreach>
+
+    </insert>
+
     <delete id="deleteBySidEid" >
         DELETE FROM `exam`.`exam_student`
         WHERE `stuNumber` = #{stuNumber}

@@ -22,7 +22,8 @@
     <title>main</title>
     <!-- Bootstrap -->
     <link href="<%=basePath %>/css/bootstrap.min.css" rel="stylesheet">
-    <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
+    <script src="<%=path%>/js/jquery-3.3.1.min.js"></script>
+    <script src="<%=path%>/js/sco.countdown.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="<%=basePath%>/js/bootstrap.min.js"></script>
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
@@ -34,7 +35,6 @@
 </head>
 
 <body>
-
 	<!--teacher头部-->
 	<c:import url="../import/s_header.jsp">
 		<c:param name="data">main</c:param>
@@ -43,9 +43,13 @@
 
 <div class="container">
     <div class="row clearfix">
-        <textarea id="noticeContent" >
+        <div class="alert alert-dismissable alert-warning">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4 id="noticeTitle"></h4>
+            <div id="noticeContent">
 
-        </textarea>
+            </div>
+        </div>
     </div>
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -54,7 +58,10 @@
                 <div class="col-md-2 column">
                     <button type="button" class="btn btn-default">试卷下载</button>
                     <button type="button" class="btn btn-default">答案上传</button>
-                    <button type="button" class="btn btn-default">查看已提交文件</button>
+                    <div>
+                        <div id="examTimeTitle">距离考试开始还有:</div>
+                        <div id="examTimeCount"></div>
+                    </div>
                 </div>
                 <div class="col-md-2 column">
                 </div>
@@ -146,7 +153,7 @@
 
     //打开socket,握手
     webSocket.onopen = function (event) {
-        alert("websocket已经连接");
+        //alert("websocket已经连接");
     }
     //接收推送的消息
     webSocket.onmessage = function (event) {
@@ -162,9 +169,9 @@
             alert(notice.noticeTitle);
             window.location.reload();
         }if(notice.signal=="notice"){
-            alert(notice.noticeTitle);
 
-            $("#noticeContent").html(notice.noticeTitle+'<br>'+notice.noticeContent);
+            $("#noticeTitle").html(notice.noticeTitle);
+            $("#noticeContent").html(notice.noticeContent);
 
         }
     }
@@ -192,6 +199,7 @@
         $.post(url, function (data) {
             if (data.status == 200) {
                 //提交成功，修改该数据
+                console.info(data);
                 var html = "";
                 var item = data.data;
                 for (var i = 0; i < item.length; i++) {
@@ -203,6 +211,9 @@
                     html += "<td>" + startTime + " 至 " + endTime + "</td>";
                     html += "<td>" + item[i].state + "</td>";
                     if("underway"== item[i].state){
+
+                        $("#examTimeTitle").html("距离考试结束还有：");
+                        $("#examTimeCount").scojs_countdown({until: item[i].endTime/1000});
                     html += "<td class='list-inline'><li>"
                         + "<form action='<%=basePath%>/student/downloadPaper.do' method='post'>"
                         + "<div class='hidden'><input type='text' name='examName' value='"+item[i].examName+"'>"
