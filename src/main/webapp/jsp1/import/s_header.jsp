@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,11 +43,11 @@
 											 class="active" 
 										</c:when>
 									</c:choose>
-								><a href="<%=path%>/login/loginPage.do">点我登陆</a></li>
+								><a href="${basePath}/login/loginPage.do">点我登陆</a></li>
 							</c:when>
 							<c:otherwise>
 								<li><a href="javascript:void(0)">学生用户：${sessionScope.user.name}</a></li>
-								<li><a class="red" href="<%=path%>/login/logout.do">点我退出</a></li>
+								<li><a class="red" href="${basePath}/login/logout.do">点我退出</a></li>
 							</c:otherwise>
 						</c:choose>
 					</ul>

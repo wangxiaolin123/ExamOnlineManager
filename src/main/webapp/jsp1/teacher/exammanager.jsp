@@ -8,23 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
-%>
+
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
+
 <html>
 <head>
     <title>考试管理</title>
-    <link href="<%=basePath %>/assert/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
-    <script src="<%=basePath%>/js/jquery-3.3.1.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="<%=basePath%>/assert/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- 导入js css等 -->
+    <c:import url="../import/style.jsp"></c:import>
     <!-- 时间选择组件 -->
-    <link href="<%=basePath %>/assert/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <script src="<%=basePath %>/assert/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="<%=basePath %>/assert/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link href="${basePath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="${basePath}/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="${basePath}/js/bootstrap-datetimepicker.zh-CN.js"></script>
 
 </head>
 <body>
@@ -58,7 +54,7 @@
                 <c:forEach items="${sessionScope.examList}" var="item">
                     <tr>
                         <td>${item.examID}</td>
-                        <td><a href="<%=basePath%>/teacher/examming.do?examID=${item.examID}">${item.examName}</a></td>
+                        <td><a href="${basePath}/teacher/examming.do?examID=${item.examID}">${item.examName}</a></td>
                         <td>
                             <en><fmt:formatDate value="${item.startTime}" pattern="yyyy-MM-dd HH:mm"/></en>
                             至 <em><fmt:formatDate value="${item.endTime}" pattern="yyyy-MM-dd HH:mm"/></em>
@@ -321,7 +317,7 @@
         //获取数据
         var params = $("#addExamForm").serialize();
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/addExam.do";
+        var url = "${basePath}/teacher/addExam.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 alert('考试添加成功');
@@ -353,7 +349,7 @@
         var tr = $(obj).parent().parent().parent();
         var examID = tr.find("td:eq(0)").text();
         // 请求服务器删除数据
-        var url = "<%=basePath%>/teacher/deleteExam.do/" + examID;
+        var url = "${basePath}/teacher/deleteExam.do/" + examID;
         $.get(url, function (data) {
             if (data.status == 200) {
                 alert("删除考试成功");
@@ -394,7 +390,7 @@
         var params = $("#updateExamForm").serialize();
         //var t = $("#updateExamForm").serializeArray();
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/updateExam.do";
+        var url = "${basePath}/teacher/updateExam.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 //提交成功，修改该数据
@@ -429,7 +425,7 @@
         console.log(form);
         $.ajax({
             type: "POST",
-            url: "<%=basePath%>/teacher/upPaper.do",
+            url: "${basePath}/teacher/upPaper.do",
             data:form,
             processData:false,
             contentType:false,
@@ -453,7 +449,7 @@
     //获取班级对应的名称
     function addClassSelects() {
 
-        var url="<%=basePath%>/teacher/getClassSelects.do";
+        var url="${basePath}/teacher/getClassSelects.do";
         $.get(url,function(res) {
 
             var list=res.data;

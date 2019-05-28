@@ -8,31 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
-%>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
+
 <html>
 <head>
     <title>学生管理</title>
 
-    <link href="<%=basePath %>/assert/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <c:import url="../import/style.jsp"></c:import>
     <!-- 引入bootstrap-table样式 -->
-    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-table样式 -->
+    <link href="${basePath}/css/bootstrap-table.min.css" rel="stylesheet">
 
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
-    <script src="<%=basePath%>/js/jquery-3.3.1.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="<%=basePath%>/assert/bootstrap/js/bootstrap.min.js"></script>
-
-
-
-    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table-locale-all.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
-
+    <script src="${basePath}/js/tableExport.min.js"></script>
+    <script src="${basePath}/js/bootstrap-table.min.js"></script>
+    <script src="${basePath}/js/bootstrap-table-locale-all.min.js"></script>
+    <script src="${basePath}/js/bootstrap-table-export.min.js"></script>
 </head>
 <body>
 <style>
@@ -87,7 +77,7 @@
         data-page-list="[10, 25, 50, 100, ALL]"
         data-show-footer="true"
         data-side-pagination="server"
-        data-url="<%=basePath%>/teacher/getStudents.do"
+        data-url="${basePath}/teacher/getStudents.do"
         data-response-handler="responseHandler">
 </table>
 
@@ -404,7 +394,7 @@
         var params = new FormData($("#importAllStudentForm")[0]);
         //params.append("examId", examId);
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/importAllStudent.do";
+        var url = "${basePath}/teacher/importAllStudent.do";
         $.ajax({
             url: url,
             type: "POST",
@@ -433,7 +423,7 @@
         var params = $("#importStudentForm").serialize();
         //var params2 = new FormData($("#importStudentForm")[0])
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/importStudent.do";
+        var url = "${basePath}/teacher/importStudent.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 alert("成功导入");
@@ -468,7 +458,7 @@
         //获取数据
         var params = $("#updateStudentForm").serialize();
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/updateStudent.do";
+        var url = "${basePath}/teacher/updateStudent.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 //提交成功，修改该数据
@@ -495,7 +485,7 @@
     }
     function deleteStudent(stuNumber) {
         // 请求服务器删除数据
-        var url = "<%=basePath%>/teacher/deleteStudent.do?stuNumber="+stuNumber;
+        var url = "${basePath}/teacher/deleteStudent.do?stuNumber="+stuNumber;
         $.get(url, function (data) {
             if (data.status == 200) {
                 alert("删除学生信息成功");
@@ -513,7 +503,7 @@
         var params = {"stuNumbers":JSON.stringify(stuNumbers)};
         //var params2 = new FormData($("#importStudentForm")[0])
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/deleteStudents.do";
+        var url = "${basePath}/teacher/deleteStudents.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 alert("删除成功");

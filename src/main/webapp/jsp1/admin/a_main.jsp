@@ -1,5 +1,3 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   Created by IntelliJ IDEA.
   User: 22719
@@ -8,11 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path;
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -34,8 +29,8 @@
 		<div class="container">
 			<div class="row clearfix">
 				<div class="col-md-6 column">
-					<a href="<%=basePath%>/admin/t_manager.do">教师管理</a>
-					<a href="<%=basePath%>/admin/examclean.do">考试清理</a>
+					<a href="${basePath}/admin/t_manager.do">教师管理</a>
+					<a href="${basePath}/admin/examclean.do">考试清理</a>
 
 					<button type="button" class="btn btn-default">系统配置</button>
 					<button type="button" class="btn btn-default">考试时间偏差设计</button>
@@ -44,11 +39,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
-
 
 </body>
 </html>

@@ -7,19 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path;
-%>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
 <html>
 <head>
 <title>教师管理</title>
-<link href="<%=basePath%>/css/bootstrap.min.css" rel="stylesheet">
-<script src="<%=basePath%>/js/jq1.12.4/jquery.min.js"></script>
-<script src="<%=basePath%>/js/bootstrap.js"></script>
-
-
+<c:import url="../import/style.jsp"/>
 </head>
 <body>
 
@@ -29,14 +21,15 @@
 	</c:import>
 	<!--end admin头部-->
 
-	
+
 		<div class="container">
 			<div style="margin: 30px;padding:30px;" class="row clearfix panel panel-default">
 				<div class="col-md-1 col-sm-12 column"></div>
 				<div class="col-md-10 column">
+                    <button type="button" class="btn btn-default pull-right">更多...</button>
 					<button type="button" id="btn_ref" class="btn btn-default pull-right">刷新</button>
 	                <button type="button" id="btn_add" class="btn btn-default pull-right">添加教师</button>
-	                <button type="button" class="btn btn-default pull-right">指定管理员</button>
+
 	            </div>
 	            <div class="col-md-1 col-sm-12 column"></div>
 			</div>
@@ -87,7 +80,7 @@
 				<div class="col-md-1 col-sm-12 column"></div>
 			</div>
 		</div>
-	
+
 
 	<!--新增-->
 	<div class="modal fade" data-keyboard="false" id="addTeacherModel"
@@ -172,7 +165,7 @@
 						<div class="form-group text-center" style="color: red">
 							<label class="col-sm-2 control-label">密码</label>
 							<div class="col-sm-10">
-								<input name="teaPassword" type="text" class="form-control"
+								<input name="teaPassword" type="password" class="form-control"
 									placeholder="请输入要重置的密码">
 							</div>
 						</div>
@@ -213,7 +206,7 @@
         var params = $("#addTeacherForm").serialize();
         //var t = $("#addTeacherForm").serializeArray(); 测试静态数据时使用
         //post请求添加数据
-        var url = "<%=basePath%>/admin/t_addteacher.do";
+        var url = "${basePath}/admin/t_addteacher.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 alert('教师添加成功');
@@ -258,7 +251,7 @@
         var teaNumber=tr.find("td:eq(0)").text();
         var trid=tr.find("td:eq(4)").text();
         // 请求服务器删除数据
-        var url = "<%=basePath%>/admin/deleteTeacher.do/" + teaNumber;
+        var url = "${basePath}/admin/deleteTeacher.do/" + teaNumber;
         $.get(url, function(data) {
             if (data.status == 200) {
                 //删除本地表格对应的行
@@ -287,14 +280,14 @@
         var tr = $(obj).parent().parent().parent();
 
         //将获取的该行的id值填充到模态框的文框中，文本框的ID为itemmodalid，其他的数据也是如此处理}
-        $("#updateTeacherForm :input[name='teaNumber']").val(tr.find("td:eq(0)").text());
-        $("#updateTeacherForm :input[name='teaName']").val(tr.find("td:eq(1)").text());
-        if (tr.find("td:eq(2)").text() == 'true') {
+        $("#updateTeacherForm :input[name='teaNumber']").val(tr.find("td:eq(1)").text());
+        $("#updateTeacherForm :input[name='teaName']").val(tr.find("td:eq(2)").text());
+        if (tr.find("td:eq(3)").find("span:eq(0)").text() == '是') {
             $("#updateTeacherForm :input[name='isadmin']").prop("checked", true);
         } else {
-            $("#updateTeacherForm :input[name='isadmin']").removeAttr("checked");
+            $("#updateTeacherForm :input[name='isadmin']").prop("checked",false);
         }
-        $("#updateTeacherForm :input[name='teaID']").val(tr.find("td:eq(4)").text());
+        $("#updateTeacherForm :input[name='teaID']").val(tr.find("td:eq(5)").text());
         //开启模态框
         $('#updateTeacherModel').modal('toggle');
 
@@ -306,17 +299,18 @@
         var params = $("#updateTeacherForm").serialize();
         //var t = $("#updateTeacherForm").serializeArray();
         //post请求添加数据
-        var url = "<%=basePath%>/admin/updateTeacher.do";
+        var url = "${basePath}/admin/updateTeacher.do";
 			$.post(url, params, function(data) {
 				if (data.status == 200) {
 					//提交成功，修改该数据
-					updateRow(data.data);
-
+                    alert("修改教师信息成功");
 					$('#updateTeacherModel').modal('toggle');
 					//数据清空
+                    window.location.reload();
 
 				} else {
 					alert(data.msg);
+                    window.location.reload();
 				}
 			})
 		})

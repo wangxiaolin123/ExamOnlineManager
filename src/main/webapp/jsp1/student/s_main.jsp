@@ -7,31 +7,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
-%>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>main</title>
-    <!-- Bootstrap -->
-    <link href="<%=basePath %>/css/bootstrap.min.css" rel="stylesheet">
-    <script src="<%=path%>/js/jquery-3.3.1.min.js"></script>
-    <script src="<%=path%>/js/sco.countdown.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="<%=basePath%>/js/bootstrap.min.js"></script>
-    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
-    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-    <![endif]-->
+    <!-- 导入js css等 -->
+    <c:import url="../import/style.jsp"></c:import>
+
+    <script src="${basePath}/js/sco.countdown.js"></script>
+
 </head>
 
 <body>
@@ -193,7 +178,7 @@
 
     $(function () {
 
-        var url = "<%=basePath%>/student/examList.do?stuNumber=${sessionScope.user.number}";
+        var url = "${basePath}/student/examList.do?stuNumber=${sessionScope.user.number}";
         $.post(url, function (data) {
             if (data.status == 200) {
                 //提交成功，修改该数据
@@ -213,7 +198,7 @@
                         $("#examTimeTitle").html("距离考试结束还有：");
                         $("#examTimeCount").scojs_countdown({until: item[i].endTime/1000});
                     html += "<td class='list-inline'><li>"
-                        + "<form action='<%=basePath%>/student/downloadPaper.do' method='post'>"
+                        + "<form action='${basePath}/student/downloadPaper.do' method='post'>"
                         + "<div class='hidden'><input type='text' name='examName' value='"+item[i].examName+"'>"
                         + "<input type='text' name='examPath' value='"+item[i].examPath+"'> </div>"
                         + "<input type='submit' value='试卷下载'>"
@@ -254,7 +239,7 @@
             examID: examID,
             //stuNumber:stuNumber,
         }
-        var url = "<%=basePath%>/student/downPager.do";
+        var url = "${basePath}/student/downPager.do";
         $.post(url, data, function (data) {
             if (data.status == 200) {
                 alert("考试试卷下载成功");
@@ -281,7 +266,7 @@
         var form = new FormData($("#upAnswerForm")[0]);
         $.ajax({
             type: "POST",
-            url: "<%=basePath%>/student/upAnswer.do",
+            url: "${basePath}/student/upAnswer.do",
             data: form,
             processData: false,
             contentType: false,

@@ -45,6 +45,7 @@ public class AdminTServiceImpl implements AdminTService {
         try {
             Teacher t = teacherDao.getTeacherById(teacher.getTeaID());
 
+            //System.out.println("更新"+t);
             if(t.getTeaNumber()!=teacher.getTeaNumber()){
                 userDao.updateUserNameByUserName(teacher.getTeaNumber(),t.getTeaNumber());
             }
@@ -55,6 +56,7 @@ public class AdminTServiceImpl implements AdminTService {
             }
             teacherDao.updateTeacherByID(teacher);
             teacher=teacherDao.getTeacherById(teacher.getTeaID());
+
             return ResultModel.ok(teacher);
         } catch (SQLException e) {
             e.printStackTrace();

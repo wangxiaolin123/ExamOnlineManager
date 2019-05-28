@@ -9,11 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + path;
-%>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -23,7 +19,7 @@
 
     <c:import url="../import/style.jsp"></c:import>
     <!-- 导入js css等 -->
-    <script src="<%=path%>/js/sco.countdown.js"></script>
+    <script src="${basePath}/js/sco.countdown.js"></script>
 
 </head>
 
@@ -138,7 +134,7 @@
 
                     <c:when test="${sessionScope.examInfo.state == 'end'}">
                         <dd>
-                            <form action='<%=basePath%>/teacher/downloadZip.do' method='post'>
+                            <form action='${basePath}/teacher/downloadZip.do' method='post'>
                                 <div class='hidden'>
                                     <input type='text' name='examName' value='${sessionScope.examInfo.examName}'>
                                     <input type='text' name='examID' value='${sessionScope.examInfo.examID}'>
@@ -147,7 +143,7 @@
                             </form>
                         </dd>
                         <dd>
-                            <form action='<%=basePath%>/teacher/downloadUpInfo.do' method='post'>
+                            <form action='${basePath}/teacher/downloadUpInfo.do' method='post'>
                                 <div class='hidden'>
                                     <input type='text' name='examName' value='${sessionScope.examInfo.examName}'>
                                     <input type='text' name='examID' value='${sessionScope.examInfo.examID}'>
@@ -472,7 +468,7 @@
             "stuNumber": StringStudent,
             "examID":${sessionScope.examInfo.examID}
         };
-        var url = "<%=basePath%>/teacher/unBindIp.do";
+        var url = "${basePath}/teacher/unBindIp.do";
 
         $.post(url, params, function (data) {
             if (data.status == 200) {
@@ -491,7 +487,7 @@
     //强制考试开始
     $("#forceBeginExam").click(function () {
 
-        var url = "<%=basePath%>/teacher/forceBegin.do?examID=${sessionScope.examInfo.examID}";
+        var url = "${basePath}/teacher/forceBegin.do?examID=${sessionScope.examInfo.examID}";
 
         $.post(url, function (data) {
             if (data.status == 200) {
@@ -514,7 +510,7 @@
         var params = $("#importStudentForm").serialize();
         //var params2 = new FormData($("#importStudentForm")[0])
         //post请求添加数据
-        var url = "<%=basePath%>/teacher/importAdditionStudent.do";
+        var url = "${basePath}/teacher/importAdditionStudent.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 alert("成功导入");
