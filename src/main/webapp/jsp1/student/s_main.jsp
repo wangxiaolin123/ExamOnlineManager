@@ -56,8 +56,6 @@
             <div class="row clearfix">
 
                 <div class="col-md-2 column">
-                    <button type="button" class="btn btn-default">试卷下载</button>
-                    <button type="button" class="btn btn-default">答案上传</button>
                     <div>
                         <div id="examTimeTitle">距离考试开始还有:</div>
                         <div id="examTimeCount"></div>

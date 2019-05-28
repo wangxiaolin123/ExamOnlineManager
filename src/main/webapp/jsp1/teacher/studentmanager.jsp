@@ -187,7 +187,7 @@
                 </button>
                 <button id="importAllStudent" type="button"
                         class="btn btn-primary">
-                    提交更改
+                    提交
                 </button>
             </div>
         </div>

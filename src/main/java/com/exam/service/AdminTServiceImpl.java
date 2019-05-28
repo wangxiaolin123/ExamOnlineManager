@@ -1,13 +1,16 @@
 package com.exam.service;
 
+import com.exam.dao.ClassInfoDao;
 import com.exam.dao.TeacherDao;
 import com.exam.dao.UserDao;
+import com.exam.domain.ClassInfo;
 import com.exam.domain.Teacher;
 import com.exam.domain.User;
 import com.exam.exception.AdminTException;
 import com.exam.utlis.MD5_Encoding;
 import com.exam.utlis.ResultModel;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
@@ -21,6 +24,8 @@ public class AdminTServiceImpl implements AdminTService {
     private TeacherDao teacherDao;
     @Resource
     private UserDao userDao;
+    @Resource
+    private ClassInfoDao classInfoDao;
 
 
 
@@ -91,5 +96,56 @@ public class AdminTServiceImpl implements AdminTService {
             e.printStackTrace();
             return ResultModel.build(500, "教师信息添加出错");
         }
+    }
+
+    @Override
+    public ResultModel updateClass(ClassInfo classInfo) {
+
+        try {
+            classInfoDao.modify(classInfo);
+            return ResultModel.ok();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ResultModel.build(500,"数据写入失败");
+
+    }
+
+    @Override
+    public ResultModel deleteClass(Integer classID) {
+
+        try {
+
+            classInfoDao.delete(classID);
+            return ResultModel.ok();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ResultModel.build(500,"数据删除失败");
+    }
+
+    @Override
+    public List<ClassInfo> getAllClassInfos() {
+
+        List<ClassInfo> list= null;
+        try {
+            list =classInfoDao.queryClassInfos();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public ResultModel addClassInfo(ClassInfo classInfo) {
+
+        try {
+            classInfoDao.insert(classInfo);
+            return ResultModel.ok();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ResultModel.build(500,"数据添加失败");
     }
 }

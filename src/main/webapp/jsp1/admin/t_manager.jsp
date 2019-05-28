@@ -213,7 +213,7 @@
         var params = $("#addTeacherForm").serialize();
         //var t = $("#addTeacherForm").serializeArray(); 测试静态数据时使用
         //post请求添加数据
-        var url = "<%=basePath%>/adminT/t_addteacher.do";
+        var url = "<%=basePath%>/admin/t_addteacher.do";
         $.post(url, params, function (data) {
             if (data.status == 200) {
                 alert('教师添加成功');
@@ -258,7 +258,7 @@
         var teaNumber=tr.find("td:eq(0)").text();
         var trid=tr.find("td:eq(4)").text();
         // 请求服务器删除数据
-        var url = "<%=basePath%>/adminT/deleteTeacher.do/" + teaNumber;
+        var url = "<%=basePath%>/admin/deleteTeacher.do/" + teaNumber;
         $.get(url, function(data) {
             if (data.status == 200) {
                 //删除本地表格对应的行
@@ -306,7 +306,7 @@
         var params = $("#updateTeacherForm").serialize();
         //var t = $("#updateTeacherForm").serializeArray();
         //post请求添加数据
-        var url = "<%=basePath%>/adminT/updateTeacher.do";
+        var url = "<%=basePath%>/admin/updateTeacher.do";
 			$.post(url, params, function(data) {
 				if (data.status == 200) {
 					//提交成功，修改该数据

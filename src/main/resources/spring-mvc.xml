@@ -56,16 +56,8 @@
 
 
 
-
-
-
-
-
-
-
     <mvc:resources mapping="/assert/bootstrap/**" location="/assert/bootstrap/"/>
     <!--<mvc:resources mapping="/img/**" location="/img/"/>-->
-
     <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
 

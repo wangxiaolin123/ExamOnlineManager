@@ -46,13 +46,7 @@
 							<a
 									href=""
 									class="btn btn-default">查看正在进行的考试</a>
-							<button type="button" class="btn btn-default" >学生信息管理</button>
-							<button type="button" class="btn btn-default">解除学生登陆锁定</button>
-							<button type="button" class="btn btn-default">通知管理</button>
-							<button type="button" class="btn btn-default">考试结束</button>
-							<button type="button" class="btn btn-default">答卷下载</button>
-							<button type="button" class="btn btn-default">导出提交信息</button>
-							<button type="button" class="btn btn-default">考试清理和删除</button>
+
 						</div>
 					</div>
 				</div>

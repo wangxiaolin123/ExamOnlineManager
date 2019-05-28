@@ -1,16 +1,15 @@
 package com.exam.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.exam.domain.ClassInfo;
 import com.exam.domain.Teacher;
 import com.exam.exception.AdminTException;
 import com.exam.service.AdminTService;
 import com.exam.utlis.ResultModel;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/adminT")
+@RequestMapping("/admin")
 public class AdminTConreoller {
 
     @Resource
@@ -92,4 +91,63 @@ public class AdminTConreoller {
         }
     }
 
+
+    @RequestMapping("/examclean.do")
+    public String examclean() {
+        return "admin/exam_clean";
+    }
+
+
+    @RequestMapping(value = "/getClassInfos.do",method = { RequestMethod.GET })
+    @ResponseBody
+    public JSONObject getstudents(@RequestParam(value = "limit",required = false)Integer limit,
+                                  @RequestParam(value = "offset",required = false)Integer offset,
+                                  @RequestParam(value = "search",required = false)String search,
+                                  HttpServletResponse response){
+
+        JSONObject object = new JSONObject();
+        List<ClassInfo> list=new ArrayList<>();
+
+        list=adminTService.getAllClassInfos();
+
+        object.put("total",list.size());
+        object.put("totalNotFiltered",list.size());
+        object.put("rows",list);
+        return object;
+    }
+
+
+    @RequestMapping(value = "/updateClass.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultModel updateClass(ClassInfo classInfo) {
+        if(classInfo!=null){
+            ResultModel res=adminTService.updateClass(classInfo);
+            return res;
+        }
+        return ResultModel.build(500,"修改班级信息失败");
+    }
+
+    @RequestMapping(value = "/deleteClass.do",method = { RequestMethod.GET })
+    @ResponseBody
+    public ResultModel deleteStudent(@Param(value = "classID")Integer classID){
+
+        if(classID!=null){
+            ResultModel res=adminTService.deleteClass(classID);
+            return res;
+        }
+        return ResultModel.build(500,"传入班级编号为空");
+    }
+
+
+    @RequestMapping(value = "/addClass.do",method=RequestMethod.POST)
+    @ResponseBody
+    public ResultModel importStudent(ClassInfo classInfo){
+        System.out.println(classInfo);
+        if (classInfo != null){
+            ResultModel res=adminTService.addClassInfo(classInfo);
+            return  ResultModel.ok();
+        }
+        return ResultModel.build(500,"学生信息为空");
+
+    }
 }

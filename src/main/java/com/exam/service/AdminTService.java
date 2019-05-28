@@ -1,5 +1,6 @@
 package com.exam.service;
 
+import com.exam.domain.ClassInfo;
 import com.exam.domain.Teacher;
 import com.exam.exception.AdminTException;
 import com.exam.utlis.ResultModel;
@@ -17,4 +18,12 @@ public interface AdminTService {
     public List<Teacher> getAllTeachers() throws AdminTException;
 
     public ResultModel addTeacher(Teacher teacher);
+
+    public ResultModel updateClass(ClassInfo classInfo);
+
+    public ResultModel deleteClass(Integer classID);
+
+    List<ClassInfo> getAllClassInfos();
+
+    ResultModel addClassInfo(ClassInfo classInfo);
 }
