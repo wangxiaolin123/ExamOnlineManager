@@ -39,6 +39,15 @@
         ORDER BY exam.examID ASC
     </select>
 
+    <select id="getExamsAndClassNameByState" resultType="exam">
+        SELECT	exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,
+                exam.examPath,exam.isAuto,exam.state,exam.isManager,exam.pack,class.className
+        FROM	exam
+        INNER JOIN class
+        WHERE exam.classID = class.classID AND  exam.state = #{state}
+        ORDER BY exam.examID ASC
+    </select>
+
     <select id="queryExamsByTeaNumberState" resultType="exam">
         SELECT exam.examID,exam.examName,exam.startTime,exam.endTime,exam.teaNumber,exam.examPath,
                 exam.isAuto,exam.state,exam.classID,exam.isManager,exam.pack

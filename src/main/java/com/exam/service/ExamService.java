@@ -33,4 +33,7 @@ public interface ExamService {
 
 
     ResultModel addAdditionStudent(Integer examID, String stuNumber, String stuName);
+
+
+    List<Exam> getExamsByState(String state);
 }

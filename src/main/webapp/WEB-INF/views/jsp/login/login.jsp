@@ -36,7 +36,7 @@
 
         <div style="margin: 1px;"></div>
         <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="密码" value="卢老师"
+        <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="密码"
                required>
 
         <div style="margin: 1px;"></div>

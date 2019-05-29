@@ -320,5 +320,17 @@ public class ExamServiceImpl implements ExamService {
         return  ResultModel.build(500,"学生信息添加失败");
     }
 
+    @Override
+    public List<Exam> getExamsByState(String state) {
+        List<Exam> examList=new ArrayList<>();
+        try {
+            examList=examDao.getExamsAndClassNameByState(state);
+            return examList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

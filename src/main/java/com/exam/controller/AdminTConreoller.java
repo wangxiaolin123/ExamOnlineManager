@@ -3,9 +3,11 @@ package com.exam.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.exam.domain.ClassInfo;
+import com.exam.domain.Exam;
 import com.exam.domain.Teacher;
 import com.exam.exception.AdminTException;
 import com.exam.service.AdminTService;
+import com.exam.service.ExamService;
 import com.exam.utlis.ResultModel;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class AdminTConreoller {
 
     @Resource
     private AdminTService adminTService;
+    @Resource
+    private ExamService examService;
 
     @RequestMapping("/mainPage.do")
 	public String show() {
@@ -98,6 +102,39 @@ public class AdminTConreoller {
     }
 
 
+    @RequestMapping(value = "/getExamInfos.do",method = { RequestMethod.GET })
+    @ResponseBody
+    public JSONObject getExamInfos(@RequestParam(value = "limit",required = false)Integer limit,
+                                  @RequestParam(value = "offset",required = false)Integer offset,
+                                  @RequestParam(value = "search",required = false)String search,
+                                   @Param(value = "state")String state,
+                                  HttpServletResponse response){
+
+        System.out.println("state："+state);
+        JSONObject object = new JSONObject();
+        List<Exam> list=new ArrayList<>();
+
+        list=examService.getExamsByState(state);
+        for(Exam e:list)
+            System.out.println(e);
+        if(list!=null && list.size()>0){
+
+            object.put("total",list.size());
+            object.put("totalNotFiltered",list.size());
+            object.put("rows",list);
+            return object;
+        }
+
+    return null;
+
+    }
+
+    @RequestMapping("/classmanager.do")
+    public String classmanager() {
+        return "admin/classmanager";
+    }
+
+
     @RequestMapping(value = "/getClassInfos.do",method = { RequestMethod.GET })
     @ResponseBody
     public JSONObject getstudents(@RequestParam(value = "limit",required = false)Integer limit,
@@ -150,4 +187,6 @@ public class AdminTConreoller {
         return ResultModel.build(500,"学生信息为空");
 
     }
+
+
 }

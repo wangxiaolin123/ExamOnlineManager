@@ -109,6 +109,10 @@ public class ExamDao {
         List<Exam> list=sqlSessionTemplate.selectList("com.exam.mapper.ExamMapper.getExamsByState",state);
         return list;
     }
+    public List<Exam> getExamsAndClassNameByState(String state) throws SQLException{
+        List<Exam> list=sqlSessionTemplate.selectList("com.exam.mapper.ExamMapper.getExamsAndClassNameByState",state);
+        return list;
+    }
 
 
     /**
