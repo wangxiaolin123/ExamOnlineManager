@@ -20,6 +20,11 @@
 </c:import>
 <!--end admin头部-->
 
+
+<ul class="breadcrumb">
+    <li><a href="${basePath}/admin/mainPage.do">首页</a></li>
+    <li><a href="${basePath}/admin/examclean.do" class="active">考试清理</a></li>
+</ul>
 <!--工具栏-->
 <div id="toolbar" class="btn-group">
   <%--  <button id="remove" class="btn btn-danger" disabled>

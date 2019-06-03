@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
 
-		//public static String HostIpPort="192.168.1.103:8080";//测试
+	//public static String HostIpPort="127.0.0.1:8080";//测试
 	public static String HostIpPort="47.102.124.211:80";//实际环境
 
 	@Resource

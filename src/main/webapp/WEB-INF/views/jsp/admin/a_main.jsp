@@ -28,6 +28,11 @@
 	<div class="container">
 		<div class="container">
 			<div class="row clearfix">
+
+				<ul class="breadcrumb">
+					<li><a href="${basePath}/admin/mainPage.do" class="active">首页</a></li>
+				</ul>
+
 				<div class="col-md-6 column">
 					<a href="${basePath}/admin/t_manager.do">教师管理</a>
 					<a href="${basePath}/admin/examclean.do">考试清理</a>

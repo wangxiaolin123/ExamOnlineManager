@@ -33,6 +33,11 @@
 
 <div class="container">
     <div class="row clearfix">
+
+        <ul class="breadcrumb">
+            <li><a href="${basePath}/teacher/mainPage.do">首页</a></li>
+            <li><a href="${basePath}/teacher/exammanager.do?teaNumber=${sessionScope.user.number}" class="active">考试管理</a></li>
+        </ul>
         <div class="col-md-2 column">
             <button type="button" id="btn_add" class="btn btn-default">添加考试</button>
             <button type="button" class="btn btn-default">其他</button>

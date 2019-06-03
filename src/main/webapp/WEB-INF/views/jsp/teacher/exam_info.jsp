@@ -33,6 +33,13 @@
 
 <div class="container">
     <div class="row clearfix">
+
+        <ul class="breadcrumb">
+            <li><a href="${basePath}/teacher/mainPage.do">首页</a></li>
+            <li><a href="${basePath}/teacher/exammanager.do?teaNumber=${sessionScope.user.number}">学生管理</a></li>
+            <li><a href="${basePath}/teacher/examming.do?examID=${sessionScope.examInfo.examID}" class="active">考试详情</a></li>
+        </ul>
+
         <div class="col-md-12 column">
             <button class="btn-default" id="addNotice">发布通知</button>
 

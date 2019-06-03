@@ -30,6 +30,11 @@
 <div class="container">
     <div class="container">
         <div class="row clearfix">
+
+            <ul class="breadcrumb">
+                <li><a href="${basePath}/teacher/mainPage.do" class="active">首页</a></li>
+            </ul>
+
             <div class="col-md-3 column">
                 <div class="list-group">
                     <a href="#" class="list-group-item active">考试管理</a>

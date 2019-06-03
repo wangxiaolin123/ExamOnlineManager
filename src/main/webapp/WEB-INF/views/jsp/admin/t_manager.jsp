@@ -23,6 +23,12 @@
 
 
 		<div class="container">
+
+			<ul class="breadcrumb">
+				<li><a href="${basePath}/admin/mainPage.do">首页</a></li>
+				<li><a href="${basePath}/admin/t_manager.do" class="active">教师管理</a></li>
+			</ul>
+
 			<div style="margin: 30px;padding:30px;" class="row clearfix panel panel-default">
 				<div class="col-md-1 col-sm-12 column"></div>
 				<div class="col-md-10 column">
