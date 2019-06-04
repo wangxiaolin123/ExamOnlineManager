@@ -36,7 +36,7 @@
 
         <ul class="breadcrumb">
             <li><a href="${basePath}/teacher/mainPage.do">首页</a></li>
-            <li><a href="${basePath}/teacher/exammanager.do?teaNumber=${sessionScope.user.number}">学生管理</a></li>
+            <li><a href="${basePath}/teacher/exammanager.do?teaNumber=${sessionScope.user.number}">考试管理</a></li>
             <li><a href="${basePath}/teacher/examming.do?examID=${sessionScope.examInfo.examID}" class="active">考试详情</a></li>
         </ul>
 

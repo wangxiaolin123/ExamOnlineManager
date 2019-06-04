@@ -29,8 +29,11 @@ public class TimeJudge {
 
         long min = result % nd % nh / nm;
 
+        //System.out.println("相差"+min+"分钟");
+
         if(minutes>=min)
             return true;
+
         return false;
     }
 
