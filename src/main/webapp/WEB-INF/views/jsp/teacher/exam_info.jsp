@@ -345,7 +345,7 @@
             $.each(list, function (index, item) {
 
                 count++;
-                console.info(item);
+               // console.info(item);
                 if (item.onLine == true) {
 
                     onLineCount++;
@@ -356,14 +356,14 @@
 
                 if (item.submit == true) {
                     subCount++;
-                    submitHtml += "<li class='list-group-item'>" + item.stuNumber + '(' + item.stuName + ')' + "</li>";
+                    submitHtml += "<li class='list-group-item'>" + item.stuNumber + '(' + item.stuName + ')' + "已提交</li>";
                 } else {
-                    notSubHtml += "<li class='list-group-item'>" + item.stuNumber + '(' + item.stuName + ')' + "</li>";
+                    notSubHtml += "<li class='list-group-item'>" + item.stuNumber + '(' + item.stuName + ')' + "未提交</li>";
                 }
             })
 
 
-            alert(count);
+            //alert(count);
             $("#onLineInfo").html("在线情况:<br>" + onLineCount + " 人在线 " + (count - onLineCount) + " 人离线");
             $("#submitInfo").html("考试提交情况:<br>" + subCount + " 人已提交 " + (count - subCount) + " 人未提交");
 

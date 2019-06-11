@@ -163,7 +163,7 @@ public class TeacherController {
         //修改学生用户状态
         ResultModel rs=teacherService.unBindIp(stuNumber,examID);
 
-        return null;
+        return rs;
     }
 
     //文件操作

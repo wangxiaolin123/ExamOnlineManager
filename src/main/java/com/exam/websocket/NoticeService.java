@@ -39,6 +39,13 @@ public class NoticeService {
         ConcurrentHashMap<String, WebSocketServer> map = WebSocketServer.getWebSocketMap();
         if (map == null || students== null) {
             System.out.println("map或students为空");
+
+            if(map==null){
+                System.out.println("map为空");
+            }
+            if(students==null){
+                System.out.println("students为空");
+            }
         } else if (map.size() != 0 && students.size() != 0) {
 
             //筛选在线人

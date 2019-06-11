@@ -1,3 +1,5 @@
+package test;
+
 import com.exam.dao.ExamStudentDao;
 import com.exam.domain.Exam;
 import com.exam.domain.ExamStudent;
@@ -60,4 +62,5 @@ public class TestExamStudent {
             e.printStackTrace();
         }
     }
+
 }

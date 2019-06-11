@@ -1,3 +1,5 @@
+package test;
+
 import com.exam.domain.Exam;
 import com.exam.domain.Student;
 import com.exam.domain.Teacher;

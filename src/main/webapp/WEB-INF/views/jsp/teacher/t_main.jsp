@@ -45,9 +45,7 @@
                         <a
                                 href="${basePath}/teacher/studentmanager.do?teaNumber=${sessionScope.user.number}"
                                 class="btn btn-default">学生信息管理</a>
-                        <a
-                                href=""
-                                class="btn btn-default">查看正在进行的考试</a>
+
 
                     </div>
                 </div>
